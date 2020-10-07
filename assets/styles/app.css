@@ -1,0 +1,217 @@
+
+body{
+    background-color: beige;
+    background-image: url(../../public/images/BACKGROUND/background-village.png);
+
+}
+
+.navFond{
+    background-image: url(../../public/images/HEADER/3bandes.png);
+   background-size: cover;
+    width: 100%;
+    margin: auto;
+    z-index: 0;
+   
+    position: relative;
+    /*
+    top: -178px;
+    */
+}
+
+#fond{
+    background-image: url(../../public/images/BACKGROUND/bande\ milieu.png);
+    margin:auto;
+    margin-top: -15px;
+    /*
+    margin-top: -243px;
+    /*
+    background-repeat: cover;
+    width: 100%;*/
+  
+   
+
+}
+#logo{
+    
+    z-index: 10000 ;
+}
+#pad{
+    padding-left: 0px !important;
+}
+
+* {
+    /* border: 1px solid black ; */
+}
+
+.guitare{
+    text-align: center;
+    border: 1px solid black ;
+}
+
+.list-nav{
+    width: 100%;
+}
+.item{
+    display: inline-block !important;
+    vertical-align: top;
+    margin: 10px;
+    position: relative;
+    width: 100px;
+    text-align: center;
+}
+
+.item ul{
+    padding: 0;
+}
+/*
+.subitem{
+    list-style-type: none;
+}*/
+
+.drop,.drop2,.drop3{
+   background-image: url(../../public/images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
+   border-color: black !important;
+   display: none;
+   background-repeat: no-repeat;
+   /* appearance: none !important; */
+   position: absolute;
+   background-size: cover;
+   /* width: 234px; */
+   height: 316px;
+   /* top: 0%; */
+   left: -75px!important;
+   z-index: 10000 !important;
+   /* border: 1px solid black ; */
+   
+}
+
+.item img{
+    visibility: hidden;
+    /* position: absolute; */
+}
+
+.navSous{
+    margin-top: 10%;
+    margin-left: 10%;
+   
+}
+/*.drop2{
+    background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
+    border-color: black !important;
+    display: none;
+    background-repeat: no-repeat;
+    appearance: none !important;
+    position: absolute;
+    background-size: 230px;
+    width: 234px;
+    height: 316px;
+    top: 0%;
+    left: -50px;
+    z-index: 10000 !important;
+}
+
+.drop3{
+    background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
+    border-color: black !important;
+    display: none;
+    background-repeat: no-repeat;
+    appearance: none !important;
+    position: absolute;
+    background-size: 230px;
+    width: 234px;
+    height: 316px;
+    top: 0%;
+    left: 0%;
+    z-index: 10000 !important;
+}
+*/
+
+.promoG{
+    left:-20% !important;
+    position: absolute;
+}
+
+#nav2{
+    font-size: 1.5rem;
+    color:white;
+}
+
+#nav3{
+    font-size: 1.1rem;
+    margin-left: -40px;
+}
+
+
+    
+  
+#fond{
+    background-image: url(../../public/images/BACKGROUND/bande\ milieu.png);
+    margin:auto;
+    margin-top: -15px;
+    background-repeat: repeat;
+    /*
+    margin-top: -243px;
+    /*
+    
+    width: 100%;*/
+  
+   
+
+}
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+.vertical-menu {
+    width: 200px;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: rgb(211, 206, 206);
+}
+  
+.description{
+    height: 150px !important;
+}
