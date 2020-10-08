@@ -101,9 +101,9 @@ class Produit
     /**
      * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie",fetch="EAGER"))
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
+     *  @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
      * })
      */
     private $cat;

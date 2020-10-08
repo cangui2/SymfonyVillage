@@ -3,6 +3,9 @@
 {% block title %}Village{% endblock %}
 
 {% block body %}
+<pre>
+    {{ dump(aSousCategorie) }}
+</pre>
 
 <header >
     <div class="container"id="fond">
@@ -11,33 +14,33 @@
                 <div class="vertical-menu">
 
                     <a href="#" class="active">Home</a>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                    <a href="#">Link 3</a>
-                    <a href="#">Link 4</a>
-                    <a href="#">Link 5</a>
-                    <a href="#">Link 6</a>
-                    <a href="#">Link 7</a>
-                    <a href="#">Link 8</a>
-                    <a href="#">Link 9</a>
-                    <a href="#">Link 10</a>
+                    
+                     {% for sousCategorie in aSousCategorie  %} 
+                    
+                    
+                    <a href="{{ path('produit',{id:sousCategorie.catId})}}">{{sousCategorie.catNom}}</a>
                    
+           {% endfor %} 
+                
                 </div>
             </div>
             
-                {% for Produitss in produit %} {# boucle 1er tableau cat #}
-                {% for Produits in Produitss %} {# boucle 2 tableau cat #}
+                {% for Produits in produit %} {# boucle 1er tableau cat #}
+                 
                 
-                    <div class="col-lg-4">
+                
+                
+                 
+                    <div class="col-lg-2">
                         <div class="card">
                             <img src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="Denim Jeans" style="width:100%">
-                            <h1>{{Produits.proLibelle}}</h1>
+                            <h1>{{Produits.cat.catNom}}</h1>
                             <p class="price">{{Produits.proPrix}}€</p>
                             <p class='description'>{{Produits.proDescription}}</p>
                             <p><button>Add to Cart</button></p>
                         </div>
                     </div>
-           {% endfor %} 
+           
            {% endfor %} 
 </header>
 {% endblock %}
