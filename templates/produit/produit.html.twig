@@ -4,7 +4,7 @@
 
 {% block body %}
 <pre>
-    {{ dump(aSousCategorie) }}
+    {{ dump(categorie) }}
 </pre>
 
 <header >
@@ -19,6 +19,7 @@
                     
                     
                     <a href="{{ path('produit',{id:sousCategorie.catId})}}">{{sousCategorie.catNom}}</a>
+                   
                    
            {% endfor %} 
                 

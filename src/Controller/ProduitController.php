@@ -26,38 +26,59 @@ class ProduitController extends AbstractController
         $produit=[];
         $aSousCategorie=[];
         $compteur=[];
-        $repository =$this->getDoctrine()
+        $categories=[];
+        
+        // SI ID <10 on clicque sur une categorie et ça recherche les sous cat ,
+                    
+        if($id < 10)
+        {
+            $repository =$this->getDoctrine()
                     ->getManager()
                     ->getRepository('App\Entity\Categorie');
                     $aSousCategorie=$repository->findBycatId1($id);
-                    
-    
-                    
+                  
+
+
         $repository =$this->getDoctrine()
                     ->getManager()
                     ->getRepository('App\Entity\Produit');
 
-             /*  for($i=0;$i<count($aSousCategorie);$i++){
-
-                array_push($produit,$repository->findByCat($aSousCategorie[$i]));
-
-             }
-            */
+            
+            for ($i=0; $i <count($aSousCategorie); $i++) { 
+                   
+                array_push($compteur,$i);
+            }
               foreach ($aSousCategorie as $valeur)
               {
-                    $produit=$repository->findByCat($aSousCategorie[2]);
+                    $produit=$repository->findByCat($aSousCategorie[0]);
                     
                }
-               for ($i=0; $i <count($aSousCategorie); $i++) { 
-                   
-                   array_push($compteur,$i);
-               }
+            }
+            else{
+                // ça cherche la cat parent et il recupere les sous cat 
+                $repository =$this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('App\Entity\Categorie');
+                    $Categorie=$repository->findBycatId($id);
+                    $catId1=$Categorie[0]->getCatId1();
+                    $aSousCategorie=$repository->findByCatId1($catId1);
+
+                  
+                    
+
+
+                $repository =$this->getDoctrine()
+                ->getManager()
+                ->getRepository('App\Entity\Produit');
+                $produit=$repository->findByCat($id);
+            }
+               
              
 
 
 
 
-        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie]);
+        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie,'categorie'=>$categories]);
         
             }
     

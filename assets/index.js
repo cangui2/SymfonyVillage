@@ -37,7 +37,7 @@ $(document).ready(function() {
 
   });
 */
-$(document).ready(function(){
+
 
 $(".topG")
     .mouseover(function() {
@@ -48,8 +48,8 @@ $(".topG")
 
       $(this).attr("src","images/BODY/TOP VENTES guitare.png"); ;
     });
-});
-$(document).ready(function(){
+
+
 
 $(".topS")
     .mouseover(function() {
@@ -60,8 +60,8 @@ $(".topS")
 
       $(this).attr("src","images/BODY/TOP VENTES saxo.png"); ;
     });
-});
-$(document).ready(function(){
+
+
 
 $(".topP")
     .mouseover(function() {
@@ -72,4 +72,13 @@ $(".topP")
 
       $(this).attr("src","images/BODY/TOP VENTES piano.png"); ;
     });
-});
+
+    $(".guitareHover")
+    .mouseover(function() {
+      $(this).attr( "src"," images/BODY/CATEGORIES ROLL OVER guitare.png"); ;
+     
+    })
+    .mouseout(function() {
+
+      $(this).attr("src","images/BODY/CATEGORIES guitare.png"); ;
+    });
