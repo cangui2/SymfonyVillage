@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,7 +23,7 @@ class RegistrationType extends AbstractType
             ->add('cliVille')
             ->add('cliTelephone')
             ->add('cliMail')
-            ->add('cliMotdepasse')
+            ->add('cliMotdepasse',PasswordType::class)
             ->add('cliLogin')
             ->add('cliType')
             ->add('cliCoefficient')

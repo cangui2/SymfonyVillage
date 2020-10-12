@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Produit
  *
  * @ORM\Table(name="produit", indexes={@ORM\Index(name="cat_id", columns={"cat_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -101,9 +101,9 @@ class Produit
     /**
      * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="Categorie",fetch="EAGER"))
+     * @ORM\ManyToOne(targetEntity="Categorie")
      * @ORM\JoinColumns({
-     *  @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
+     *   @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
      * })
      */
     private $cat;
@@ -249,16 +249,13 @@ class Produit
     {
         return $this->cat;
     }
-    public function __toString()
-    {
-     return $this->cat;
-    }
+
     public function setCat(?Categorie $cat): self
     {
         $this->cat = $cat;
 
         return $this;
     }
-    
+
 
 }

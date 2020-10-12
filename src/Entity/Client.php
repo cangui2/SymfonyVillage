@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Client
  *
- * @ORM\Table(name="client", indexes={@ORM\Index(name="com_id", columns={"com_id"}), @ORM\Index(name="pay_id", columns={"pay_id"})})
+ * @ORM\Table(name="client", indexes={@ORM\Index(name="client_ibk_1", columns={"pay_id"}), @ORM\Index(name="com_id", columns={"com_id"})})
  * @ORM\Entity
  */
 class Client
@@ -127,16 +127,6 @@ class Client
     private $cliReference;
 
     /**
-     * @var \Pays
-     *
-     * @ORM\ManyToOne(targetEntity="Pays")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pay_id", referencedColumnName="pay_id")
-     * })
-     */
-    private $pay;
-
-    /**
      * @var \Commande
      *
      * @ORM\ManyToOne(targetEntity="Commande")
@@ -145,6 +135,16 @@ class Client
      * })
      */
     private $com;
+
+    /**
+     * @var \Pays
+     *
+     * @ORM\ManyToOne(targetEntity="Pays")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pay_id", referencedColumnName="pay_id")
+     * })
+     */
+    private $pay;
 
     public function getCliId(): ?int
     {
@@ -331,18 +331,6 @@ class Client
         return $this;
     }
 
-    public function getPay(): ?Pays
-    {
-        return $this->pay;
-    }
-
-    public function setPay(?Pays $pay): self
-    {
-        $this->pay = $pay;
-
-        return $this;
-    }
-
     public function getCom(): ?Commande
     {
         return $this->com;
@@ -351,6 +339,18 @@ class Client
     public function setCom(?Commande $com): self
     {
         $this->com = $com;
+
+        return $this;
+    }
+
+    public function getPay(): ?Pays
+    {
+        return $this->pay;
+    }
+
+    public function setPay(?Pays $pay): self
+    {
+        $this->pay = $pay;
 
         return $this;
     }

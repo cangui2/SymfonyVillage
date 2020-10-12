@@ -5,8 +5,21 @@
     <h1>bonjour</h1>
 
     {{form_start(form)}}
-    {{form_widget(form)}}
-    <button type="button" class="btn btn-primary">inscription</button>
-    {{form_end(form)}}
+    {{ form_widget(form._token) }}
+    {{form_row(form.cliNom,{'label':'Nom de Famille'})}}
+    {{form_row(form.cliPrenom,{'label':'Prenom'})}}
+    {{form_row(form.cliSexe,{'label':'Homme ou Femme'})}}
+    {{form_row(form.cliDateDeNaissance,{'label':'Date de naissance'})}}
+    {{form_row(form.cliTelephone,{'label':'Numero de telephone'})}}
+    {{form_row(form.cliAdresseFacturation,{'label':'Adresse de facturation'})}}
+    {{form_row(form.cliAdresseLivraison,{'label':'Adresse de livraison'})}}
+    {{form_row(form.cliCp,{'label':'Code Postal'})}}
+    {{form_row(form.cliVille,{'label':'Ville'})}}
+    {{form_row(form.pay,{'label':'Pays'})}}
+    {{form_row(form.cliMail,{'label':'Adresse E-mail'})}}
+    {{form_row(form.cliLogin,{'label':'Choix du Speudo de connexion'})}}
+    {{form_row(form.cliMotdepasse,{'label':'Choix du mot de passe'})}}
+    <button type="submit" class="btn btn-primary">inscription</button>
+    
 
 {% endblock body %} 

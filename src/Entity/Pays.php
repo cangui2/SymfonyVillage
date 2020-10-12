@@ -13,32 +13,35 @@ use Doctrine\ORM\Mapping as ORM;
 class Pays
 {
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="pay_id", type="integer", nullable=false)
+     * @ORM\Column(name="pay_id", type="string", length=50, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $payId;
+    private $payId = '';
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="pay_libelle", type="integer", nullable=false)
+     * @ORM\Column(name="pay_libelle", type="string", length=50, nullable=false)
      */
-    private $payLibelle;
+    private $payLibelle = '';
 
-    public function getPayId(): ?int
+    public function getPayId(): ?string
     {
         return $this->payId;
     }
-
-    public function getPayLibelle(): ?int
+    public function __toString()
+    {
+        return  $this->payLibelle;
+    }
+    public function getPayLibelle(): ?string
     {
         return $this->payLibelle;
     }
 
-    public function setPayLibelle(int $payLibelle): self
+    public function setPayLibelle(string $payLibelle): self
     {
         $this->payLibelle = $payLibelle;
 
