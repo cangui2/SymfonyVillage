@@ -3,14 +3,20 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Client
  *
  * @ORM\Table(name="client", indexes={@ORM\Index(name="client_ibk_1", columns={"pay_id"}), @ORM\Index(name="com_id", columns={"com_id"})})
  * @ORM\Entity
+ * @UniqueEntity(
+ * fields ={"cliMail"},
+ * message ="l'email que vous indiqué est deja utilise"
+ * )
  */
-class Client
+class Client implements UserInterface
 {
     /**
      * @var int
@@ -88,22 +94,23 @@ class Client
      * @var string
      *
      * @ORM\Column(name="cli_mail", type="string", length=255, nullable=false)
+     * 
      */
     private $cliMail;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="cli_motdepasse", type="string", length=60, nullable=true)
+     * @ORM\Column(name="Password", type="string", length=60, nullable=true)
      */
-    private $cliMotdepasse;
+    private $password;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="cli_login", type="string", length=50, nullable=true)
+     * @ORM\Column(name="Username", type="string", length=50, nullable=true)
      */
-    private $cliLogin;
+    private $username;
 
     /**
      * @var bool|null
@@ -146,6 +153,7 @@ class Client
      */
     private $pay;
 
+    private $roles =[];
     public function getCliId(): ?int
     {
         return $this->cliId;
@@ -271,26 +279,26 @@ class Client
         return $this;
     }
 
-    public function getCliMotdepasse(): ?string
+    public function getPassword(): ?string
     {
-        return $this->cliMotdepasse;
+        return $this->password;
     }
 
-    public function setCliMotdepasse(?string $cliMotdepasse): self
+    public function setPassword(?string $password): self
     {
-        $this->cliMotdepasse = $cliMotdepasse;
+        $this->password = $password;
 
         return $this;
     }
 
-    public function getCliLogin(): ?string
+    public function getUsername(): ?string
     {
-        return $this->cliLogin;
+        return $this->username;
     }
 
-    public function setCliLogin(?string $cliLogin): self
+    public function setUsername(?string $username): self
     {
-        $this->cliLogin = $cliLogin;
+        $this->username = $username;
 
         return $this;
     }
@@ -354,6 +362,22 @@ class Client
 
         return $this;
     }
+    public function getSalt()
+    {
+        // The bcrypt and argon2i algorithms don't require a separate salt.
+        // You *may* need a real salt if you choose a different encoder.
+        return null;
+    }
 
+    public function getRoles()
+    {
+        $roles=$this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique(($roles));
+    }
+
+    public function eraseCredentials()
+    {
+    }
 
 }

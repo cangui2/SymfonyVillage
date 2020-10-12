@@ -32,15 +32,16 @@ class Pays
     {
         return $this->payId;
     }
-    public function __toString()
-    {
-        return  $this->payLibelle;
-    }
+
     public function getPayLibelle(): ?string
     {
         return $this->payLibelle;
     }
-
+    
+    public function __toString(): string
+    {
+        return $this->payLibelle;
+    }
     public function setPayLibelle(string $payLibelle): self
     {
         $this->payLibelle = $payLibelle;
