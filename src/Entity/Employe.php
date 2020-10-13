@@ -148,6 +148,13 @@ class Employe
     private $empLogin;
 
     /**
+     * @var json|null
+     *
+     * @ORM\Column(name="emp_role", type="json", nullable=true)
+     */
+    private $empRole;
+
+    /**
      * @var \Employe
      *
      * @ORM\ManyToOne(targetEntity="Employe")
@@ -394,6 +401,18 @@ class Employe
     public function setEmpLogin(?string $empLogin): self
     {
         $this->empLogin = $empLogin;
+
+        return $this;
+    }
+
+    public function getEmpRole(): ?array
+    {
+        return $this->empRole;
+    }
+
+    public function setEmpRole(?array $empRole): self
+    {
+        $this->empRole = $empRole;
 
         return $this;
     }

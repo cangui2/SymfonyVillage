@@ -37,11 +37,7 @@ class Pays
     {
         return $this->payLibelle;
     }
-    
-    public function __toString(): string
-    {
-        return $this->payLibelle;
-    }
+
     public function setPayLibelle(string $payLibelle): self
     {
         $this->payLibelle = $payLibelle;
