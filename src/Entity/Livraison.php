@@ -47,7 +47,7 @@ class Livraison
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="LigneDeCommande", mappedBy="liv")
+     * @ORM\ManyToMany(targetEntity="Contenir", mappedBy="liv")
      */
     private $lig;
 
@@ -101,14 +101,14 @@ class Livraison
     }
 
     /**
-     * @return Collection|LigneDeCommande[]
+     * @return Collection|Contenir[]
      */
     public function getLig(): Collection
     {
         return $this->lig;
     }
 
-    public function addLig(LigneDeCommande $lig): self
+    public function addLig(Contenir $lig): self
     {
         if (!$this->lig->contains($lig)) {
             $this->lig[] = $lig;
@@ -118,7 +118,7 @@ class Livraison
         return $this;
     }
 
-    public function removeLig(LigneDeCommande $lig): self
+    public function removeLig(Contenir $lig): self
     {
         if ($this->lig->contains($lig)) {
             $this->lig->removeElement($lig);

@@ -3,13 +3,11 @@
 namespace App\Security;
 
 use App\Entity\Utilis;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
@@ -18,10 +16,9 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
-use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
+class AppCustomAuthenticator extends AbstractFormLoginAuthenticator
 {
     use TargetPathTrait;
 
@@ -30,14 +27,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $entityManager;
     private $urlGenerator;
     private $csrfTokenManager;
-    private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
-        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports(Request $request)
@@ -48,7 +43,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function getCredentials(Request $request)
     {
-        
         $credentials = [
             'utilUsername' => $request->request->get('utilUsername'),
             'password' => $request->request->get('password'),
@@ -70,10 +64,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         $user = $this->entityManager->getRepository(Utilis::class)->findOneBy(['utilUsername' => $credentials['utilUsername']]);
-        
+
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Username could not be found.');
+            throw new CustomUserMessageAuthenticationException('Util Username could not be found.');
         }
 
         return $user;
@@ -81,15 +75,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+        // Check the user's password or other credentials and return true or false
+        // If there are no credentials to check, you can just return true
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
-    }
 
-    /**
-     * Used to upgrade (rehash) the user's password automatically over time.
-     */
-    public function getPassword($credentials): ?string
-    {
-        return $credentials['password'];
+        throw new \Exception('TODO: check the credentials inside '.__FILE__);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
@@ -99,7 +89,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('index'));
+        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()

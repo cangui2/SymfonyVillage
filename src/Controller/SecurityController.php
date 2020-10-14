@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
+use App\Entity\Employe;
 use App\Form\RegistrationType;
+use App\Form\RegistrationType2Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Client;
+use App\Entity\Utilis;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +17,7 @@ use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInt
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
+use Symfony\Component\VarDumper\VarDumper;
 
 class SecurityController extends AbstractController
 {
@@ -24,22 +27,23 @@ class SecurityController extends AbstractController
     public function registration(Request $request,EntityManagerInterface $manager,UserPasswordEncoderInterface $encoder){ 
         
         $user=new Client();
-
+       
 
         $form =$this->createForm(RegistrationType::class,$user);
 
         $form->handleRequest($request);
+      
             // passe la requet
         if ($form->isSubmitted() && $form->isValid()){
 
             $hash= $encoder->encodePassword($user,$user->getPassword());
-            $user->setPassword($hash);
+            $user->setUtilPassword($hash);
 
             $manager->persist($user);
             // je veux que tu persiste dans le temps prepare a le sauvegarder
             $manager->flush();
             //sauvegarde
-            return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('index');
         }
 
 
@@ -47,7 +51,7 @@ class SecurityController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
-
+    
     /**
      * @Route("/login", name="app_login")
      */
@@ -72,4 +76,5 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
 }

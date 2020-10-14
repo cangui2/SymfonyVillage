@@ -7,11 +7,21 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Prã©parer
  *
- * @ORM\Table(name="prÃ©parer", indexes={@ORM\Index(name="com_id", columns={"com_id"})})
+ * @ORM\Table(name="prÃ©parer", indexes={@ORM\Index(name="FK_B085C7C3748C0F37", columns={"com_id"})})
  * @ORM\Entity
  */
 class Prã©parer
 {
+    /**
+     * @var \Commande
+     *
+     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="com_id", referencedColumnName="com_id")
+     * })
+     */
+    private $com;
+
     /**
      * @var \Livraison
      *
@@ -24,15 +34,17 @@ class Prã©parer
      */
     private $liv;
 
-    /**
-     * @var \Commande
-     *
-     * @ORM\ManyToOne(targetEntity="Commande")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="com_id", referencedColumnName="com_id")
-     * })
-     */
-    private $com;
+    public function getCom(): ?Commande
+    {
+        return $this->com;
+    }
+
+    public function setCom(?Commande $com): self
+    {
+        $this->com = $com;
+
+        return $this;
+    }
 
     public function getLiv(): ?Livraison
     {
@@ -42,18 +54,6 @@ class Prã©parer
     public function setLiv(?Livraison $liv): self
     {
         $this->liv = $liv;
-
-        return $this;
-    }
-
-    public function getCom(): ?Commande
-    {
-        return $this->com;
-    }
-
-    public function setCom(?Commande $com): self
-    {
-        $this->com = $com;
 
         return $this;
     }

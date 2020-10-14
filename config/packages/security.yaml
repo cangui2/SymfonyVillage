@@ -2,13 +2,19 @@ security:
     encoders:
         App\Entity\Client:
             algorithm: bcrypt
+        App\Entity\Employe :
+            algorithm: bcrypt
+    
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    providers:
-        users_in_memory: { memory: null }
-        our_db_provider:
-            entity:
-                class: App\Entity\Client
-                property: Username
+    providers:    
+
+      users:
+        entity:
+            class: 'App\Entity\Utilis'
+            property: 'utilUsername'
+       
+        
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -16,7 +22,7 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: our_db_provider
+            provider: users
 
             form_login:
                 login_path: security_login
@@ -24,6 +30,8 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+                    
+                entry_point: App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -38,5 +46,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+     - { path: ^/admin, roles: ROLE_ADMIN }
+     - { path: ^/profile, roles: ROLE_USER }
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]

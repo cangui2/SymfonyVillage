@@ -19,14 +19,14 @@ class Pays
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $payId = '';
+    private $payId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pay_libelle", type="string", length=50, nullable=false)
      */
-    private $payLibelle = '';
+    private $payLibelle;
 
     public function getPayId(): ?string
     {
@@ -37,7 +37,10 @@ class Pays
     {
         return $this->payLibelle;
     }
-
+    public function __toString()
+    {
+        return $this->payLibelle;
+    }
     public function setPayLibelle(string $payLibelle): self
     {
         $this->payLibelle = $payLibelle;

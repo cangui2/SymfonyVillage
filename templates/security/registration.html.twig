@@ -6,19 +6,20 @@
 
     {{form_start(form)}}
     {{ form_widget(form._token) }}
-    {{form_row(form.cliNom,{'label':'Nom de Famille'})}}
-    {{form_row(form.cliPrenom,{'label':'Prenom'})}}
-    {{form_row(form.cliSexe,{'label':'Homme ou Femme'})}}
-    {{form_row(form.cliDateDeNaissance,{'label':'Date de naissance'})}}
-    {{form_row(form.cliTelephone,{'label':'Numero de telephone'})}}
-    {{form_row(form.cliAdresseFacturation,{'label':'Adresse de facturation'})}}
-    {{form_row(form.cliAdresseLivraison,{'label':'Adresse de livraison'})}}
-    {{form_row(form.cliCp,{'label':'Code Postal'})}}
-    {{form_row(form.cliVille,{'label':'Ville'})}}
+    {{form_row(form.Util_Nom,{'label':'Nom de Famille'})}}
+    {{form_row(form.Util_Prenom,{'label':'Prenom'})}}
+    {{form_row(form.Util_sexe,{'label':'Homme ou Femme'})}}
+    {{form_row(form.Util_date_de_naissance,{'label':'Date de naissance'})}}
+    {{form_row(form.Util_telephone,{'label':'Numero de telephone'})}}
+    {{form_row(form.Util_adresse,{'label':'Adresse de facturation'})}}
+    
+    {{form_row(form.Util_Cp,{'label':'Code Postal'})}}
+    {{form_row(form.Util_ville,{'label':'Ville'})}}
     {{form_row(form.pay,{'label':'Pays'})}}
-    {{form_row(form.cliMail,{'label':'Adresse E-mail'})}}
-    {{form_row(form.Username,{'label':'Choix du Speudo de connexion'})}}
-    {{form_row(form.Password,{'label':'Choix du mot de passe'})}}
+    {{form_row(form.Util_mail,{'label':'Adresse E-mail'})}}
+    {{form_row(form.Util_username,{'label':'Choix du Speudo de connexion'})}}
+    {{form_row(form.Util_password,{'label':'Choix du mot de passe'})}}
+    {{form_row(form.cliId,{'label':'id'})}}
     <button type="submit" class="btn btn-primary">inscription</button>
     
 
