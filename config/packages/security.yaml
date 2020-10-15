@@ -4,7 +4,7 @@ security:
             algorithm: bcrypt
         App\Entity\Employe :
             algorithm: bcrypt
-    
+        Symfony\Component\Security\Core\User\User: 'auto'
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:    
@@ -23,15 +23,15 @@ security:
             anonymous: true
             lazy: true
             provider: users
-
+        
             form_login:
-                login_path: security_login
-                check_path: security_login
+                login_path: app_login
+                check_path: app_login
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
-                    
-                entry_point: App\Security\LoginFormAuthenticator
+                    - App\Security\AppCustomAuthenticator
+                entry_point: App\Security\AppCustomAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -47,7 +47,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
      - { path: ^/admin, roles: ROLE_ADMIN }
-     - { path: ^/profile, roles: ROLE_USER }
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    #- { path: ^/profile, roles: ROLE_USER }
+    
