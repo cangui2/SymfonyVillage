@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,21 +41,6 @@ class Livraison
      * @ORM\Column(name="liv_d_preparation", type="date", nullable=true)
      */
     private $livDPreparation;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Contenir", mappedBy="liv")
-     */
-    private $lig;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->lig = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     public function getLivId(): ?int
     {
@@ -100,32 +83,5 @@ class Livraison
         return $this;
     }
 
-    /**
-     * @return Collection|Contenir[]
-     */
-    public function getLig(): Collection
-    {
-        return $this->lig;
-    }
-
-    public function addLig(Contenir $lig): self
-    {
-        if (!$this->lig->contains($lig)) {
-            $this->lig[] = $lig;
-            $lig->addLiv($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLig(Contenir $lig): self
-    {
-        if ($this->lig->contains($lig)) {
-            $this->lig->removeElement($lig);
-            $lig->removeLiv($this);
-        }
-
-        return $this;
-    }
 
 }
