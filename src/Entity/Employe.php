@@ -65,11 +65,10 @@ class Employe extends Utilis
      * @var \Utilis
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Utilis")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_utilis", referencedColumnName="Id_utilis")
-     * })
+     * 
+     * @ORM\oneToOne(targetEntity="Utilis")
+     * @ORM\JoinColumn(name="Id_utilis", ColumnName="Id_utilis",onDelete="Cascade")
+     * 
      */
     private $idUtilis;
 
@@ -167,17 +166,6 @@ class Employe extends Utilis
         return $this;
     }
 
-    public function getIdUtilis(): ?int
-    {
-        return $this->idUtilis;
-    }
-
-    public function setIdUtilis(?Utilis $idUtilis): self
-    {
-        $this->idUtilis = $idUtilis;
-
-        return $this;
-    }
 
     public function getPos(): ?Poste
     {

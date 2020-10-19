@@ -85,21 +85,7 @@ class ProduitController extends AbstractController
 
              
 
-    /**
-     * @Route("/produit={id}", name="produit")
-     */
-    /*
-    public function afficheProduit(){
-
-               
-        $repository =$this->getDoctrine()
-        ->getManager()
-        ->getRepository('App\Entity\Produit');
-        $produit=$repository->find(15);
-        //$aSousCategorie=$produit->getCat()->getcatNom();
-        return $this->render('produit/produit.html.twig',['produit'=>$produit]);
-
-    }
     
-    */
+    
+    
     }

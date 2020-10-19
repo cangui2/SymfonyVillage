@@ -19,8 +19,9 @@ abstract class Utilis implements UserInterface
     /**
      * @var int
      *
-     * @ORM\Column(name="Id_utilis", type="integer", nullable=false)
+     * 
      * @ORM\Id
+     * @ORM\Column(name="Id_utilis", type="integer", nullable=false)
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idUtilis;
@@ -84,7 +85,7 @@ abstract class Utilis implements UserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Util_password", type="string", length=50, nullable=true)
+     * @ORM\Column(name="Util_password", type="string", length=255, nullable=true)
      */
     private $utilPassword;
 
@@ -142,7 +143,9 @@ abstract class Utilis implements UserInterface
     {
         return $this->idUtilis;
     }
-
+    function setIdutilis($id){
+        return $this->idUtilis=$id;
+    }
     public function getUtilNom(): ?string
     {
         return $this->utilNom;

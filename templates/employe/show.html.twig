@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employe{% endblock %}
+
+{% block body %}
+    <h1>Employe</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdUtilis</th>
+                <td>{{ employe.idUtilis }}</td>
+            </tr>
+            <tr>
+                <th>UtilNom</th>
+                <td>{{ employe.utilNom }}</td>
+            </tr>
+            <tr>
+                <th>UtilPrenom</th>
+                <td>{{ employe.utilPrenom }}</td>
+            </tr>
+            <tr>
+                <th>UtilSexe</th>
+                <td>{{ employe.utilSexe }}</td>
+            </tr>
+            <tr>
+                <th>UtilAdresse</th>
+                <td>{{ employe.utilAdresse }}</td>
+            </tr>
+            <tr>
+                <th>UtilCp</th>
+                <td>{{ employe.utilCp }}</td>
+            </tr>
+            <tr>
+                <th>UtilVille</th>
+                <td>{{ employe.utilVille }}</td>
+            </tr>
+            <tr>
+                <th>UtilMail</th>
+                <td>{{ employe.utilMail }}</td>
+            </tr>
+            <tr>
+                <th>UtilUsername</th>
+                <td>{{ employe.utilUsername }}</td>
+            </tr>
+            <tr>
+                <th>UtilPassword</th>
+                <td>{{ employe.utilPassword }}</td>
+            </tr>
+            <tr>
+                <th>UtilTelephone</th>
+                <td>{{ employe.utilTelephone }}</td>
+            </tr>
+            <tr>
+                <th>UtilDateDeNaissance</th>
+                <td>{{ employe.utilDateDeNaissance ? employe.utilDateDeNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ employe.roles }}</td>
+            </tr>
+            <tr>
+                <th>EmpPosId</th>
+                <td>{{ employe.empPosId }}</td>
+            </tr>
+            <tr>
+                <th>EmpEmpId</th>
+                <td>{{ employe.empEmpId }}</td>
+            </tr>
+            <tr>
+                <th>EmpDateEntree</th>
+                <td>{{ employe.empDateEntree ? employe.empDateEntree|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EmpDateSortie</th>
+                <td>{{ employe.empDateSortie ? employe.empDateSortie|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EmpNumSecuSocial</th>
+                <td>{{ employe.empNumSecuSocial }}</td>
+            </tr>
+            <tr>
+                <th>EmpRoles</th>
+                <td>{{ employe.empRoles }}</td>
+            </tr>
+            <tr>
+                <th>EmpId1</th>
+                <td>{{ employe.empId1 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('employe_index') }}">back to list</a>
+
+    <a href="{{ path('employe_edit', {'idUtilis': employe.idUtilis}) }}">edit</a>
+
+    {{ include('employe/_delete_form.html.twig') }}
+{% endblock %}

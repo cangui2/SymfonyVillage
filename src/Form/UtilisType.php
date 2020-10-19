@@ -2,12 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Employe;
+use App\Entity\Utilis;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RegistrationType2Type extends AbstractType
+class UtilisType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,21 +23,14 @@ class RegistrationType2Type extends AbstractType
             ->add('utilPassword')
             ->add('utilTelephone')
             ->add('utilDateDeNaissance')
-            ->add('empPosId')
-            ->add('empEmpId')
-            ->add('empDateEntree')
-            ->add('empDateSortie')
-            ->add('empNumSecuSocial')
-            
-            ->add('empId1')
-            ->add('pos')
+            ->add('roles')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Employe::class,
+            'data_class' => Utilis::class,
         ]);
     }
 }

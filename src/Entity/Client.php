@@ -51,11 +51,9 @@ class Client extends Utilis
      * @var \Utilis
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Utilis")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_utilis", referencedColumnName="Id_utilis")
-     * })
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToOne(targetEntity="Utilis")
+     *
      */
     private $idUtilis;
 
@@ -139,17 +137,7 @@ class Client extends Utilis
         return $this;
     }
 
-    public function getIdUtilis(): ?int
-    {
-        return $this->idUtilis;
-    }
-
-    public function setIdUtilis(?Utilis $idUtilis): self
-    {
-        $this->idUtilis = $idUtilis;
-
-        return $this;
-    }
+    
 
     public function getCom(): ?Commande
     {
