@@ -179,12 +179,12 @@ class Fournisseur
         return $this;
     }
 
-    public function getPay(): ?Pays
+    public function getPay(): ?string
     {
         return $this->pay;
     }
 
-    public function setPay(?Pays $pay): self
+    public function setPay(?string $pay): self
     {
         $this->pay = $pay;
 

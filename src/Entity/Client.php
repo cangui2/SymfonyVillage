@@ -76,7 +76,8 @@ class Client extends Utilis
      * })
      */
     private $pay;
-    private $roles;
+    
+ 
     public function getCliId(): ?int
     {
         return $this->cliId;
@@ -162,15 +163,14 @@ class Client extends Utilis
 
         return $this;
     }
-    public function getRoles(){
-        return array('ROLE_USER');
-    }
-    public function setRoles($roles) 
-    {
-        $this->roles=$roles;
-          
-        
+   
     
-    }
-
+    public function getRoles(): array
+   {
+       $Roles=$this->roles;
+       // guarantee every user at least has ROLE_USER
+       $Roles[] = 'ROLE_USER';
+        
+       return array_unique($Roles);
+   }
 }

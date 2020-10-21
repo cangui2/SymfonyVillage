@@ -18,6 +18,7 @@
 {% block configured_body_contents %}
     {{ parent() }}
     {% for htmlContent in edit_form.vars.ea_crud_form.assets.bodyContents %}
+        
         {{ htmlContent|raw }}
     {% endfor %}
 {% endblock %}

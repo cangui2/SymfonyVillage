@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Serializable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -102,12 +103,8 @@ abstract class Utilis implements UserInterface
      * @ORM\Column(name="Util_date_de_naissance", type="date", nullable=true)
      */
     private $utilDateDeNaissance;
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="roles", type="string", length=50, nullable=true)
-     */
-    private $roles;
+   
+    private $type;
     public function getUsername()
     {
         return $this->utilUsername;
@@ -125,16 +122,8 @@ abstract class Utilis implements UserInterface
         return $this->utilPassword;
     }
 
-   
-
-    public function setRoles($roles) 
-    {
-        
-           $this->roles=$roles;
-        
     
-    }
-
+    
     public function eraseCredentials()
     {
     }
@@ -277,4 +266,14 @@ abstract class Utilis implements UserInterface
 
         return $this;
     }
+   
+    public function getType(){
+        return $this->type;
+    }
+   public function setType($types){
+        $this->type=$types;
+   }
+ 
+
+
 }

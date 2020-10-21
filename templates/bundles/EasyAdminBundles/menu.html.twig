@@ -18,6 +18,7 @@
     {% block main_menu %}
         {% for menuItem in ea.mainMenu.items %}
             {% block menu_item %}
+          
                 <li class="{{ menuItem.isMenuSection ? 'header' }} {{ menuItem.hasSubItems ? 'treeview' }} {{ ea.mainMenu.isSelected(menuItem) ? 'active' }} {{ ea.mainMenu.isExpanded(menuItem) ? 'active submenu-active' }}">
                     {{ _self.render_menu_item(menuItem) }}
 

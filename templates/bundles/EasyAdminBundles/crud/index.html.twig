@@ -136,6 +136,7 @@
                 <tbody>
                 {% block table_body %}
                     {% for entity in entities %}
+                    
                         {% if not entity.isAccessible %}
                             {% set some_results_are_hidden = true %}
                         {% else %}

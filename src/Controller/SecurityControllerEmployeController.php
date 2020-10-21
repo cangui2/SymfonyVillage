@@ -34,13 +34,16 @@ class SecurityControllerEmployeController extends AbstractController
       
             // passe la requet
         if ($form2->isSubmitted() && $form2->isValid()){
-
+            
             $hash= $encoder->encodePassword($user,$user->getPassword());
             $user->setUtilPassword($hash);
-
+            
+         
             $manager->persist($user);
+           
             // je veux que tu persiste dans le temps prepare a le sauvegarder
             $manager->flush();
+            
             //sauvegarde
             return $this->redirectToRoute('index');
         }

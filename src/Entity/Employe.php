@@ -20,13 +20,6 @@ class Employe extends Utilis
     private $empPosId;
 
     /**
-     * @var int|null
-     *
-     * @ORM\Column(name="emp_emp_id", type="integer", nullable=true)
-     */
-    private $empEmpId;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="emp_date_entree", type="date", nullable=false)
@@ -50,25 +43,25 @@ class Employe extends Utilis
     /**
      * @var string|null
      *
-     * @ORM\Column(name="emp_roles", type="string", length=50, nullable=true)
-     */
-    private $empRoles;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="emp_id_1", type="integer", nullable=true)
+     * @ORM\Column(name="emp_id_1", type="string", length=255, nullable=true)
      */
     private $empId1;
 
     /**
+     *@var array
+     *
+     * @ORM\Column(name="emp_roles", type="json", nullable=false)
+     */
+    private $empRoles=[];
+    /**
      * @var \Utilis
      *
      * @ORM\Id
-     * 
-     * @ORM\oneToOne(targetEntity="Utilis")
-     * @ORM\JoinColumn(name="Id_utilis", ColumnName="Id_utilis",onDelete="Cascade")
-     * 
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Utilis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_utilis", referencedColumnName="Id_utilis")
+     * })
      */
     private $idUtilis;
 
@@ -90,18 +83,6 @@ class Employe extends Utilis
     public function setEmpPosId(?int $empPosId): self
     {
         $this->empPosId = $empPosId;
-
-        return $this;
-    }
-
-    public function getEmpEmpId(): ?int
-    {
-        return $this->empEmpId;
-    }
-
-    public function setEmpEmpId(?int $empEmpId): self
-    {
-        $this->empEmpId = $empEmpId;
 
         return $this;
     }
@@ -142,30 +123,19 @@ class Employe extends Utilis
         return $this;
     }
 
-    public function getEmpRoles(): ?string
-    {
-        return $this->empRoles;
-    }
-
-    public function setEmpRoles(?string $empRoles): self
-    {
-        $this->empRoles = $empRoles;
-
-        return $this;
-    }
-
-    public function getEmpId1(): ?int
+    public function getEmpId1(): ?string
     {
         return $this->empId1;
     }
 
-    public function setEmpId1(?int $empId1): self
+    public function setEmpId1(?string $empId1): self
     {
         $this->empId1 = $empId1;
 
         return $this;
     }
 
+  
 
     public function getPos(): ?Poste
     {
@@ -178,16 +148,29 @@ class Employe extends Utilis
 
         return $this;
     }
-    public function getRoles(){
-        return array($this->empRoles);
-    }
-    public function setRoles($roles) 
+
+  public function getRoles(): array
+   {
+       $Roles=$this->empRoles;
+       // guarantee every user at least has ROLE_USER
+       $Roles[] = 'ROLE_USER';
+        
+       return array_unique($Roles);
+   }
+   
+   public function setRoles(?array $roles): self
     {
-        
-            $this->empRoles=$roles;
-        
-    
+        $this->empRoles = $roles;
+ 
+        return $this;
     }
 
-
+    public function getEmproles(){
+       $this->empRoles=$this->getRoles();
+       return $this;
+    }
+    public function setEmpRoles($Roles){
+        $this->empRoles= $this->setRoles($Roles);
+        return $this;
+    }
 }

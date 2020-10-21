@@ -3,19 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categorie;
-use App\Entity\Client;
 use App\Entity\Employe;
 use App\Entity\Produit;
-use App\Entity\Utilis;
-use Doctrine\DBAL\Schema\View;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+
 class DashboardController extends AbstractDashboardController
 {
     /**

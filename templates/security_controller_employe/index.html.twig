@@ -6,7 +6,9 @@
 
 
 {{form_start(form)}}
-{{ form_widget(form._token)}}
+<pre>
+    {{ dump(form.roles) }}
+</pre>
 {{form_widget(form)}}
 
 <button type="submit" class="btn btn-primary">inscription</button>
