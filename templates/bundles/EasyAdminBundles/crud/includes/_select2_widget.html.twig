@@ -3,9 +3,9 @@
 
 {% set ea_select2_locale = ea.i18n.htmlLocale in ea_select2_locales
     ? ea.i18n.htmlLocale
-    : ea.i18n.language in ea_select2_locales ? ea.i18n.language : 'en'
+    : ea.i18n.language in ea_select2_locales ? ea.i18n.language : 'fr'
 %}
 
-{% if ea_select2_locale != 'en' %}
+{% if ea_select2_locale != 'fr' %}
     <script src="{{ asset('bundles/easyadmin/select2/i18n/' ~ ea_select2_locale ~ '.js') }}"></script>
 {% endif %}

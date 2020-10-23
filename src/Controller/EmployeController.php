@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Employe;
-use App\Form\EmployeType;
+use App\Form\Employe1Type;
+use App\Form\RegistrationType2Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,15 +24,6 @@ class EmployeController extends AbstractController
             ->getRepository(Employe::class)
             ->findAll();
 
-            foreach ($employes as $employe ) {
-                var_dump($employe->getIdUtilis());
-                foreach ($employe as $key => $value) {
-                var_dump($key);
-                var_dump($value->getIdUtilis());
-                echo '<br><br><br><br>';
-                }
-            }
-
         return $this->render('employe/index.html.twig', [
             'employes' => $employes,
         ]);
@@ -43,7 +35,7 @@ class EmployeController extends AbstractController
     public function new(Request $request): Response
     {
         $employe = new Employe();
-        $form = $this->createForm(EmployeType::class, $employe);
+        $form = $this->createForm(RegistrationType2Type::class, $employe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,7 +67,7 @@ class EmployeController extends AbstractController
      */
     public function edit(Request $request, Employe $employe): Response
     {
-        $form = $this->createForm(EmployeType::class, $employe);
+        $form = $this->createForm(RegistrationType2Type::class, $employe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -101,6 +93,6 @@ class EmployeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('employe_index');
+        return $this->redirectToRoute('admin');
     }
 }

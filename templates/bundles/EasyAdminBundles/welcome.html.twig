@@ -1,28 +1,70 @@
 {# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
 {% extends '@EasyAdmin/page/content.html.twig' %}
-
+ {% block stylesheets %}
+         {{ encore_entry_link_tags('app') }}
+        
+        {% endblock %}
 {% block page_title 'Welcome to EasyAdmin 3' %}
 
 {% block page_content %}
-  
+  <h1> Liste Employe </h1>
 
-    <p>
-        <strong>ADMIN test</strong>
-    </p>
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+                <th>IdUtilis</th>
+                <th>UtilNom</th>
+                <th>UtilPrenom</th>
+                <th>UtilSexe</th>                
+                <th>UtilMail</th>
+                <th>UtilUsername</th>
+                <th>UtilTelephone</th>
+                <th>UtilDateDeNaissance</th>
+                <th>EmpDateEntree</th>
+                <th>EmpDateSortie</th>
+                <th>EmpNumSecuSocial</th>
+                <th>EmpRoles</th>
+               
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+             {% for employe in employes %}
+            <tr>
+                <td>{{ employe.idUtilis }}</td>
+                <td>{{ employe.utilNom }}</td>
+                <td>{{ employe.utilPrenom }}</td>
+                <td>{{ employe.utilSexe }}</td>
+                <td>{{ employe.utilMail }}</td>
+                <td>{{ employe.utilUsername }}</td>
+                
+                <td>{{ employe.utilTelephone }}</td>
+                <td>{{ employe.utilDateDeNaissance ? employe.utilDateDeNaissance|date('Y-m-d') : '' }}</td>
+                
+                <td>{{ employe.empDateEntree ? employe.empDateEntree|date('Y-m-d') : '' }}</td>
+                <td>{{ employe.empDateSortie ? employe.empDateSortie|date('Y-m-d') : '' }}</td>
+                <td>{{ employe.empNumSecuSocial }}</td>
+               
+                <td>{{ employe.empRoles ? employe.empRoles|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_show', {'idUtilis': employe.idUtilis}) }}">show</a>
+                    <a href="{{ path('admin_edit', {'idUtilis': employe.idUtilis}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    <p>
-        
-    </p>
-
-   
-
-    <p>
-      
-    </p>
-
-    <pre>
+    <a href="{{ path('admin_new') }}">Create new</a>
+    </table>
+    </div>
 
 
 
-    </pre>
+
+    
 {% endblock %}

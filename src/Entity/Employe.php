@@ -58,7 +58,7 @@ class Employe extends Utilis
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Utilis")
+     * @ORM\OneToMany(targetEntity="Utilis")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_utilis", referencedColumnName="Id_utilis")
      * })
@@ -173,4 +173,14 @@ class Employe extends Utilis
         $this->empRoles= $this->setRoles($Roles);
         return $this;
     }
+    public function getId(){
+        $this->idUtilis=$this->getIdUtilis();
+        return $this;
+    }
+    public function setId($id){
+        $this->idUtilis=$this->setIdutilis($id);
+
+}
+
+
 }
