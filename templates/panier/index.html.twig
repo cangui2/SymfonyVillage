@@ -3,10 +3,20 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
-
+<style>
+    .panier {
+       
+        background-image:  url(images/BACKGROUND/bande\ milieu.png) !important;
+   
+    }
+    td,th,h1{
+        padding-left: 25px !important;
+    }
+</style>
 {% if item | length > 0%}
 <div class="container">
-    <div class="row">
+    <div class="row panier">
+    <h1>Panier Client </h1>
         <table class="table">
             <thead>
                 <tr>
