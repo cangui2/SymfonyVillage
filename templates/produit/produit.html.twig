@@ -36,7 +36,10 @@
                             <h1>{{Produits.cat.catNom}}</h1>
                             <p class="price">{{Produits.proPrix}}€</p>
                             <p class='description'>{{Produits.proDescription}}</p>
-                            <p><button>Add to Cart</button></p>
+                            <a href={{ path('panier_add',{'id':Produits.proId})}} class="btn btn-success float-right">
+                            <i class=" fas fa-shopping-cart mr-1"></i>
+                            Ajouter
+                            </a>
                         </div>
                     </div>
            
