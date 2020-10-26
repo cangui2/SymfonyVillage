@@ -1,0 +1,59 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+    <h1>Produit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ProId</th>
+                <th>ProLibelle</th>
+                <th>ProDescription</th>
+                <th>ProPrix</th>
+                <th>ProRef</th>
+                <th>ProStock</th>
+                <th>ProStockAlerte</th>
+                <th>ProCouleur</th>
+                <th>ProPhoto</th>
+                <th>ProDateAjout</th>
+                <th>ProDateModif</th>
+                <th>ProBloque</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.proId }}</td>
+                <td>{{ produit.proLibelle }}</td>
+                <td>{{ produit.proDescription }}</td>
+                <td>{{ produit.proPrix }}</td>
+                <td>{{ produit.proRef }}</td>
+                <td>{{ produit.proStock }}</td>
+                <td>{{ produit.proStockAlerte }}</td>
+                <td>{{ produit.proCouleur }}</td>
+                <td>{{ produit.proPhoto }}</td>
+                <td>{{ produit.proDateAjout ? produit.proDateAjout|date('Y-m-d') : '' }}</td>
+                <td>{{ produit.proDateModif ? produit.proDateModif|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ produit.proBloque ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('produit_show', {'proId': produit.proId}) }}">show</a>
+                    <a href="{{ path('produit_edit', {'proId': produit.proId}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('produit_new') }}">Create new</a>
+        </div>
+</div>
+{% endblock %}

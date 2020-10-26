@@ -1,17 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Employe{% endblock %}
-{% block stylesheets %}
-{{ encore_entry_link_tags('app') }}
 
-{% endblock %}
 {% block body %}
 
 <div class="container">
     <div class="row col-12">
 
 
-        <div class="container" style="background-color: aqua;">
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <h1>Employe:{{ employe.utilNom }}</h1>

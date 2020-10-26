@@ -16,9 +16,28 @@ $(document).ready(function() {
     $( this ).find('.drop').hide('blind')
     });
 
+    $('.clavier').hover( function() {
+     
+      $( this ).find('.drop').show('slide');
+  }, function(){
+      $( this ).find('.drop').hide('blind')
+      });
+      $('.trompette').hover( function() {
+     
+        $( this ).find('.drop').show('slide');
+    }, function(){
+        $( this ).find('.drop').hide('blind')
+        });
 
-
-
+        $('.espaceClient').hover( function() {
+     
+          $( this ).find('.drop2').show('slide');
+      }, function(){
+          $( this ).find('.drop2').hide('blind')
+          });
+  
+  
+  
 
 
 

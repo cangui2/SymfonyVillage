@@ -12,13 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Client extends Utilis
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="cli_id", type="integer", nullable=false)
-     */
-    private $cliId;
-
+   
     /**
      * @var string|null
      *
@@ -78,17 +72,6 @@ class Client extends Utilis
     private $pay;
     
  
-    public function getCliId(): ?int
-    {
-        return $this->cliId;
-    }
-
-    public function setCliId(int $cliId): self
-    {
-        $this->cliId = $cliId;
-
-        return $this;
-    }
 
     public function getCliAdresseLivraison(): ?string
     {

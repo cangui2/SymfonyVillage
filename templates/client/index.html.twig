@@ -1,0 +1,69 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+    <h1>Client index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdUtilis</th>
+                <th>UtilNom</th>
+                <th>UtilPrenom</th>
+                <th>UtilSexe</th>
+                <th>UtilAdresse</th>
+                <th>UtilCp</th>
+                <th>UtilVille</th>
+                <th>UtilMail</th>
+                <th>UtilUsername</th>
+                <th>UtilPassword</th>
+                <th>UtilTelephone</th>
+                <th>UtilDateDeNaissance</th>
+                <th>CliId</th>
+                <th>CliAdresseLivraison</th>
+                <th>CliType</th>
+                <th>CliCoefficient</th>
+                <th>CliReference</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.idUtilis }}</td>
+                <td>{{ client.utilNom }}</td>
+                <td>{{ client.utilPrenom }}</td>
+                <td>{{ client.utilSexe }}</td>
+                <td>{{ client.utilAdresse }}</td>
+                <td>{{ client.utilCp }}</td>
+                <td>{{ client.utilVille }}</td>
+                <td>{{ client.utilMail }}</td>
+                <td>{{ client.utilUsername }}</td>
+                <td>{{ client.utilPassword }}</td>
+                <td>{{ client.utilTelephone }}</td>
+                <td>{{ client.utilDateDeNaissance ? client.utilDateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ client.cliId }}</td>
+                <td>{{ client.cliAdresseLivraison }}</td>
+                <td>{{ client.cliType ? 'Yes' : 'No' }}</td>
+                <td>{{ client.cliCoefficient }}</td>
+                <td>{{ client.cliReference }}</td>
+                <td>
+                    <a href="{{ path('client_show', {'idUtilis': client.idUtilis}) }}">show</a>
+                    <a href="{{ path('client_edit', {'idUtilis': client.idUtilis}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('client_new') }}">Create new</a>
+     </div>
+</div>
+{% endblock %}

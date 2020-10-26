@@ -1,0 +1,71 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Employe index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+    <h1>Employe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdUtilis</th>
+                <th>UtilNom</th>
+                <th>UtilPrenom</th>
+                <th>UtilSexe</th>
+                <th>UtilAdresse</th>
+                <th>UtilCp</th>
+                <th>UtilVille</th>
+                <th>UtilMail</th>
+                <th>UtilUsername</th>
+                <th>UtilPassword</th>
+                <th>UtilTelephone</th>
+                <th>UtilDateDeNaissance</th>
+                <th>EmpPosId</th>
+                <th>EmpDateEntree</th>
+                <th>EmpDateSortie</th>
+                <th>EmpNumSecuSocial</th>
+                <th>EmpId1</th>
+                <th>EmpRoles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.idUtilis }}</td>
+                <td>{{ employe.utilNom }}</td>
+                <td>{{ employe.utilPrenom }}</td>
+                <td>{{ employe.utilSexe }}</td>
+                <td>{{ employe.utilAdresse }}</td>
+                <td>{{ employe.utilCp }}</td>
+                <td>{{ employe.utilVille }}</td>
+                <td>{{ employe.utilMail }}</td>
+                <td>{{ employe.utilUsername }}</td>
+                <td>{{ employe.utilPassword }}</td>
+                <td>{{ employe.utilTelephone }}</td>
+                <td>{{ employe.utilDateDeNaissance ? employe.utilDateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ employe.empPosId }}</td>
+                <td>{{ employe.empDateEntree ? employe.empDateEntree|date('Y-m-d') : '' }}</td>
+                <td>{{ employe.empDateSortie ? employe.empDateSortie|date('Y-m-d') : '' }}</td>
+                <td>{{ employe.empNumSecuSocial }}</td>
+                <td>{{ employe.empId1 }}</td>
+                <td>{{ employe.empRoles ? employe.empRoles|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('employe_show', {'idUtilis': employe.idUtilis}) }}">show</a>
+                    <a href="{{ path('employe_edit', {'idUtilis': employe.idUtilis}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('employe_new') }}">Create new</a>
+      </div>
+</div>
+{% endblock %}

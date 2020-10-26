@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/employe")
+ * @Route("admin2/employe")
  */
 class EmployeController extends AbstractController
 {
@@ -30,7 +30,7 @@ class EmployeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="employe_new", methods={"GET","POST"})
+     * @Route("admin2/new", name="employe_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -53,7 +53,7 @@ class EmployeController extends AbstractController
     }
 
     /**
-     * @Route("/{idUtilis}", name="employe_show", methods={"GET"})
+     * @Route("admin2/{idUtilis}", name="employe_show", methods={"GET"})
      */
     public function show(Employe $employe): Response
     {
@@ -63,7 +63,7 @@ class EmployeController extends AbstractController
     }
 
     /**
-     * @Route("/{idUtilis}/edit", name="employe_edit", methods={"GET","POST"})
+     * @Route("admin2/{idUtilis}/edit", name="employe_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Employe $employe): Response
     {
@@ -83,7 +83,7 @@ class EmployeController extends AbstractController
     }
 
     /**
-     * @Route("/{idUtilis}", name="employe_delete", methods={"DELETE"})
+     * @Route("admin2/{idUtilis}", name="employe_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Employe $employe): Response
     {

@@ -3,89 +3,92 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Form\ProduitType;
+use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symmfony\Repository\CategoriesRespository;
 
+/**
+ * @Route("admin2/produit")
+ */
 class ProduitController extends AbstractController
 {
     /**
-     * @Route("/produit", name="produit")
+     * @Route("/", name="produit_index", methods={"GET"})
      */
-    public function index()
+    public function index(ProduitRepository $produitRepository): Response
     {
-        return $this->render('produit/produit.html.twig', [
-            'controller_name' => 'ProduitController',
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produitRepository->findAll(),
         ]);
     }
+
     /**
-     * @Route("/produit={id}", name="produit")
+     * @Route("admin2/new", name="produit_new", methods={"GET","POST"})
      */
-   
-    public function afficheProduit($id){
-        $produit=[];
-        $aSousCategorie=[];
-        $compteur=[];
-        $categories=[];
-        
-        // SI ID <10 on clicque sur une categorie et ça recherche les sous cat ,
-                    
-        if($id < 10)
-        {
-            $repository =$this->getDoctrine()
-                    ->getManager()
-                    ->getRepository('App\Entity\Categorie');
-                    $aSousCategorie=$repository->findBycatId1($id);
-                  
+    public function new(Request $request): Response
+    {
+        $produit = new Produit();
+        $form = $this->createForm(ProduitType::class, $produit);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($produit);
+            $entityManager->flush();
 
-        $repository =$this->getDoctrine()
-                    ->getManager()
-                    ->getRepository('App\Entity\Produit');
+            return $this->redirectToRoute('produit_index');
+        }
 
-            
-            for ($i=0; $i <count($aSousCategorie); $i++) { 
-                   
-                array_push($compteur,$i);
-            }
-              foreach ($aSousCategorie as $valeur)
-              {
-                    $produit=$repository->findByCat($aSousCategorie[0]);
-                    
-               }
-            }
-            else{
-                // ça cherche la cat parent et il recupere les sous cat 
-                $repository =$this->getDoctrine()
-                    ->getManager()
-                    ->getRepository('App\Entity\Categorie');
-                    $Categorie=$repository->findBycatId($id);
-                    $catId1=$Categorie[0]->getCatId1();
-                    $aSousCategorie=$repository->findByCatId1($catId1);
-
-                  
-                    
-
-
-                $repository =$this->getDoctrine()
-                ->getManager()
-                ->getRepository('App\Entity\Produit');
-                $produit=$repository->findByCat($id);
-            }
-               
-             
-
-
-
-
-        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie,'categorie'=>$categories]);
-        
-            }
-    
-
-             
-
-    
-    
-    
+        return $this->render('produit/new.html.twig', [
+            'produit' => $produit,
+            'form' => $form->createView(),
+        ]);
     }
+
+    /**
+     * @Route("admin2/{proId}", name="produit_show", methods={"GET"})
+     */
+    public function show(Produit $produit): Response
+    {
+        return $this->render('produit/show.html.twig', [
+            'produit' => $produit,
+        ]);
+    }
+
+    /**
+     * @Route("admin2/{proId}/edit", name="produit_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Produit $produit): Response
+    {
+        $form = $this->createForm(ProduitType::class, $produit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('produit_index');
+        }
+
+        return $this->render('produit/edit.html.twig', [
+            'produit' => $produit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("admin2/{proId}", name="produit_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Produit $produit): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$produit->getProId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($produit);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('produit_index');
+    }
+}

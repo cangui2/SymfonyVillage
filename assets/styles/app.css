@@ -68,7 +68,7 @@ body{
     list-style-type: none;
 }*/
 
-.drop,.drop2,.drop3{
+.drop,.drop3{
    background-image: url(../../public/images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
    border-color: black !important;
    display: none;
@@ -84,7 +84,20 @@ body{
    /* border: 1px solid black ; */
    
 }
-
+.drop2{
+    border-color: black !important;
+   display: none;
+   background-repeat: no-repeat;
+   /* appearance: none !important; */
+   position: absolute;
+   background-size: cover;
+   /* width: 234px; */
+   height: 316px;
+   /* top: 0%; */
+   left: -75px!important;
+   z-index: 10000 !important;
+   /* border: 1px solid black ; */
+}
 .item img{
     visibility: hidden;
     /* position: absolute; */

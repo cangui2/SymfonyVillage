@@ -1,11 +1,42 @@
 {% extends 'base.html.twig' %}
-
-
 {% block body %}
-    <h1>bonjour</h1>
+<style>
+    .inscription {
+        background-image:  url(images/BACKGROUND/bande\ milieu.png) !important; 
+    }
+    .inscrip{
+        margin-left: 0px;
+        padding-top: 20px;
+    }
+    .titre{
+        text-align:center;
+    }
+    .image{
+        margin-top: 10px;
+    }
 
+</style>
+
+<div class="container inscription">
+    <div class="row inscrip">
+
+    <div class='col-12 titre'>
+    <h2>Créez vos identifiants</h2>
+    </div>
+    <div class='col-6 titre'>
     {{form_start(form)}}
+    
     {{ form_widget(form._token) }}
+    
+    {{form_row(form.Util_username,{'label':'Choix du Speudo de connexion'})}}
+    </div>
+    <div class='col-6'>
+    {{form_row(form.Util_password,{'label':'Choix du mot de passe'})}}
+    </div>
+    <div class='col-12 titre'>
+    <h2>Créez vos identifiants</h2>
+    </div>
+    <div class='col-6'>
     {{form_row(form.Util_Nom,{'label':'Nom de Famille'})}}
     {{form_row(form.Util_Prenom,{'label':'Prenom'})}}
     {{form_row(form.Util_sexe,{'label':'Homme ou Femme'})}}
@@ -17,10 +48,12 @@
     {{form_row(form.Util_ville,{'label':'Ville'})}}
     {{form_row(form.pay,{'label':'Pays'})}}
     {{form_row(form.Util_mail,{'label':'Adresse E-mail'})}}
-    {{form_row(form.Util_username,{'label':'Choix du Speudo de connexion'})}}
-    {{form_row(form.Util_password,{'label':'Choix du mot de passe'})}}
-    {{form_row(form.cliId,{'label':'id'})}}
-    <button type="submit" class="btn btn-primary">inscription</button>
     
-
+    
+    <button type="submit" ><img src="images\BODY\ESPACE CLIENT\bouton valider.png"></button>
+    </div>
+    <div class='col-6 image'>
+    <img src="images\BODY\ESPACE CLIENT\CADRE numero.png">
+</div>
+</div>
 {% endblock body %} 
