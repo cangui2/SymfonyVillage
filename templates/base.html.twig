@@ -1,138 +1,168 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-         {{ encore_entry_link_tags('app') }}
-        
-        {% endblock %}
-    </head>
-    
-    <header style="z-index: 100;position: relative;">
-    <div class="container">
-      <div class="row navFond">
-        <div id="logo" class="col-4 col-lg-4 d-inline-block" style="padding-left: 0px;padding-right: 0px;">
-          <a href= {{ path('index') }}><img   class="logo img-fluid" src="images\HEADER\logo village green.png" style="position: absolute;">
-        </div>
-        <div class="col-lg-7" id="navFond">
-          <nav class="navbar navbar-expand-lg navbar-light col-12 col-md-12 col-lg-12" id='one'>
-            <a class="navbar-brand"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class=" col-12 col-lg-12">
-              <div class="container">
-                <div class="row row-cols-12">
-                  <div class=" col-lg-12">
-                    <a class="navbar-brand"></a>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                      <div class="navbar-nav col-lg-10" id="nav1">
-                        <a class="nav-link active col-lg-4" href="#">Infos</a>
-                        <a class="nav-link espaceClient col-lg-6" href="#"> Espace client
-                          <div class=" col drop2" >
-                            <div class="collapse navbar-collapse nav10" id="navbarNavAltMarkup">
-                              <div class="navbar-nav drop10" id="three">
-                              
-                                <div class="row">
-                                <img src="images/MODAL/MODAL espace client encadrer.png">
-                                  <div class="col">
-                                    1 of 2
+
+<head>
+  {% block head %}
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome!{% endblock %}</title>
+
+  {% block stylesheets %}
+
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" src="{{asset('js/index.js')}}"></script>
+  {% endblock %}
+  {% endblock %}
+</head>
+
+{% block header %}
+<header style="z-index: 100;position: relative;">
+
+  <div class="container">
+    <div class="row navFond">
+      <div id="logo" class="col-4 col-lg-4 d-inline-block" style="padding-left: 0px;padding-right: 0px;">
+        <a href={{ path('index') }}><img class="logo img-fluid" src="{{asset('images/HEADER/logo village green.png')}}"
+            style="position: absolute;min-width: 100%;">
+      </div>
+      <div class="col-lg-7" id="navFond">
+        <nav class="navbar navbar-expand-lg navbar-light col-12 col-md-12 col-lg-12" id='one'>
+          <a class="navbar-brand"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class=" col-12 col-lg-12">
+            <div class="container">
+              <div class="row row-cols-12">
+                <div class=" col-lg-12">
+                  <a class="navbar-brand"></a>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav col-lg-10" id="nav1">
+                      <a class="nav-link active col-lg-4" href="#">Infos</a>
+                      <a class="nav-link espaceClient col-lg-6" id="button" href="#"> Espace client
+                        <div class="row" id="tooltip">
+                          <div role="tooltip">
+                            <div class="container">
+                              <div class="col" style="margin-top:30px">
+                                <h5>Etes-vous déja clients chez nous</h5>
+                                <form method="post" action={{ path('app_login') }}>
+                                  <input type="text" name="utilUsername" id="inputUtilUsername" class="form-control"
+                                    required autofocus>
+                                  <input type="password" name="password" id="inputPassword" class="form-control"
+                                    required>
+                                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                  <div class="checkbox mb-3">
+                                    <label>
+                                      <input type="checkbox" name="_remember_me"> Rester connecté
+                                    </label>
                                   </div>
-                                  <div class="col">
-                                    2 of 4
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col">
-                                    3 of 4
-                                  </div>
-                                  <div class="col">
-                                    4 of 4
-                                  </div>
-                                </div>
+
+                                  <button class="button" type="submit">
+                                    <img src="{{asset('images/MODAL/MODAL espace client bouton connect.png')}}" />
+                                  </button>
+                                </form>
+                              </div>
+                              <div class="col">
+                                <h6>N'êtes-vous pas encore client?</h6>
+                                <p class="texte"> En tant que client Village greenvous pouvez suivre vos envoies,
+                                  lire des tests produits exclusifs,évaluer des produits,déposer des petites annonces,
+                                  gérer vos cheques
+                                  -cadeaux,devenir partenaire et bien plus encore.
+                                </p>
                               </div>
                             </div>
-                            
                           </div>
-                        </a>
+                        </div>
                         <a class="nav-link col-lg-2" href="#"><img src="images\HEADER\picto panier.png" alt=""></a>
                         <a class="nav-link col-lg-4" href="#"><img src="images\HEADER\picto pays.png" alt=""></a>
-                      </div>
-                    </div>
-
-
-                  </div>
-                  <div class=" col-lg-12">
-                    <div class="collapse navbar-collapse" id="nav2 navbarNavAltMarkup">
-                      <div class="navbar-nav" id="two">
-                        <a class="nav-link col-lg-4 active" href="#">Produit </a>
-                        <a class="nav-link col-lg-4" href="#"> Services</a>
-                        <a class="nav-link col-lg-4" href="#">Aide</a>
-                        <a class="nav-link col-lg-4" href="#">A Propos</a>
-                      </div>
                     </div>
                   </div>
-                  <nav class="col-lg-12 row">
-                    <ul class="list-nav row">
-                      <li class="item " id="guitare">guitare
-                        <ul class="drop">
-                          <li class="subitem">test1</li>
-                          <li class="subitem">test2</li>
-                          <img src="images/MODAL/MODAL guitare encadrer.png">
-                        </ul>
-                      </li>
-                      <li class="item "id="batterie">batterie
-                        <ul class="drop">
-                          <li class="subitem">test1</li>
-                          <li class="subitem">test3</li>
-                          <img src="images/MODAL/MODAL guitare encadrer.png">
-                        </ul>
-                      </li>
-                      <li class="item clavier">clavier
-                        <ul class="drop">
-                          <li class="subitem">test1</li>
-                          <li class="subitem">test2</li>
-                          <img src="images/MODAL/MODAL guitare encadrer.png">
-                        </ul>
-                      </li>
-                      <li class="item trompette">trompette
-                        <ul class="drop">
-                          <li class="subitem">test1</li>
-                          <li class="subitem">test2</li>
-                          <img src="images/MODAL/MODAL guitare encadrer.png">
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
-                  <!-- Modal sous menu Via jquery-->
 
 
                 </div>
+                <div class=" col-lg-12">
+                  <div class="collapse navbar-collapse" id="nav2 navbarNavAltMarkup">
+                    <div class="navbar-nav" id="two">
+                      <a class="nav-link col-lg-4 active" href="#">Produit </a>
+                      <a class="nav-link col-lg-4" href="#"> Services</a>
+                      <a class="nav-link col-lg-4" href="#">Aide</a>
+                      <a class="nav-link col-lg-4" href="#">A Propos</a>
+                    </div>
+                  </div>
+                </div>
+                <nav class="col-lg-12 row">
+                  <ul class="list-nav row">
+                    <li class="item " id="guitare">guitare
+                      <ul class="drop">
+                        <li class="subitem">test1</li>
+                        <li class="subitem">test2</li>
+                        <img src="images/MODAL/MODAL guitare encadrer.png">
+                      </ul>
+                    </li>
+                    <li class="item " id="batterie">batterie
+                      <ul class="drop">
+                        <li class="subitem">test1</li>
+                        <li class="subitem">test3</li>
+                        <img src="images/MODAL/MODAL guitare encadrer.png">
+                      </ul>
+                    </li>
+                    <li class="item clavier">clavier
+                      <ul class="drop">
+                        <li class="subitem">test1</li>
+                        <li class="subitem">test2</li>
+                        <img src="images/MODAL/MODAL guitare encadrer.png">
+                      </ul>
+                    </li>
+                    <li class="item trompette">trompette
+                      <ul class="drop">
+                        <li class="subitem">test1</li>
+                        <li class="subitem">test2</li>
+                        <img src="images/MODAL/MODAL guitare encadrer.png">
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+
+
+
               </div>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
     </div>
+  </div>
 
-  </header>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
-    {% block footer %}
-    <div class="container">
-      <div class="row  row-cols-4">
-        <div class="col-12 col-lg-12" style="padding-left: 0px;padding-right: 0px;">
-          <img src="images\FOOTER\footer.png" style="max-width: 100%;max-height: 100%;" alt="">
-        </div>
+</header>
+{% endblock %}
 
+<body>
+ {% block body %} {% endblock %}
+  {% block footer %}
+  <div class="container">
+    <div class="row  row-cols-4">
+      <div class="col-12 col-lg-12" style="padding-left: 0px;padding-right: 0px;">
+        <img src="{{ asset('images/FOOTER/footer.png')}}" style="max-width: 100%;max-height: 100%;" alt="">
       </div>
-
     </div>
- {% endblock %}
+  </div>
+  {% endblock %}
+</body>
+
+{% block javascripts %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+</script>
+{% endblock %}
+
 </html>

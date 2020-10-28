@@ -1,15 +1,15 @@
 
 body{
     background-color: beige;
-    background-image: url(../../public/images/BACKGROUND/background-village.png);
+    background-image: url(../images/BACKGROUND/background-village.png);
 
 }
 
 .navFond{
-    background-image: url(../../public/images/HEADER/3bandes.png);
+    background-image: url(../images/HEADER/3bandes.png);
    background-size: cover;
     width: 100%;
-    margin: auto;
+    margin-left: 0px !important;
     z-index: 0;
    
     position: relative;
@@ -19,7 +19,8 @@ body{
 }
 
 #fond{
-    background-image: url(../../public/images/BACKGROUND/bande\ milieu.png);
+    background-image: url(../images/BACKGROUND/bande\ milieu.png);
+    background-size: cover;
     margin:auto;
     margin-top: -15px;
     /*
@@ -69,7 +70,7 @@ body{
 }*/
 
 .drop,.drop3{
-   background-image: url(../../public/images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
+   background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
    border-color: black !important;
    display: none;
    background-repeat: no-repeat;
@@ -108,36 +109,6 @@ body{
     margin-left: 10%;
    
 }
-/*.drop2{
-    background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
-    border-color: black !important;
-    display: none;
-    background-repeat: no-repeat;
-    appearance: none !important;
-    position: absolute;
-    background-size: 230px;
-    width: 234px;
-    height: 316px;
-    top: 0%;
-    left: -50px;
-    z-index: 10000 !important;
-}
-
-.drop3{
-    background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
-    border-color: black !important;
-    display: none;
-    background-repeat: no-repeat;
-    appearance: none !important;
-    position: absolute;
-    background-size: 230px;
-    width: 234px;
-    height: 316px;
-    top: 0%;
-    left: 0%;
-    z-index: 10000 !important;
-}
-*/
 
 .promoG{
     left:-20% !important;
@@ -154,23 +125,14 @@ body{
     margin-left: -40px;
 }
 
-
-    
-  
-#fond{
-    background-image: url(../../public/images/BACKGROUND/bande\ milieu.png);
-    margin:auto;
-    margin-top: -15px;
-    background-repeat: repeat;
-    /*
-    margin-top: -243px;
-    /*
-    
-    width: 100%;*/
-  
+.produit{
+    margin-right:0px!important;
+    margin-left: 0px !important;
    
-
 }
+    
+  
+
 
 
 .card {
@@ -239,3 +201,56 @@ body{
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
     }
+
+.texte{
+    font-size: 0.7rem !important;
+}
+    #tooltip {
+        background-image: url('../images/MODAL/MODAL espace client encadrer.png')!important;
+        min-width: 535px ;
+        min-height: 290px;
+        color: white;
+        font-weight: bold;
+        padding: 4px 8px;
+        font-size: 13px;
+        border-radius: 4px;
+        display: none;
+        z-index: 1;
+        
+        
+      }
+
+      #tooltip[data-show] {
+        display: block;
+       
+      }
+
+      #arrow,
+      #arrow::before {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        z-index: -1;
+      }
+
+      #arrow::before {
+        content: '';
+        transform: rotate(45deg);
+        
+      }
+
+      #tooltip[data-popper-placement^='top'] > #arrow {
+        bottom: -4px;
+      }
+
+      #tooltip[data-popper-placement^='bottom'] > #arrow {
+        top: -4px;
+      }
+
+      #tooltip[data-popper-placement^='left'] > #arrow {
+        right: -4px;
+      }
+
+      #tooltip[data-popper-placement^='right'] > #arrow {
+        left: -4px;
+      }

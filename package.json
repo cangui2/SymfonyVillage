@@ -3,6 +3,7 @@
         "@symfony/webpack-encore": "^0.31.0",
         "core-js": "^3.0.0",
         "css-loader": "^4.3.0",
+        "exports-loader": "^1.1.1",
         "regenerator-runtime": "^0.13.2",
         "webpack-notifier": "^1.6.0"
     },
@@ -15,8 +16,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@popperjs/core": "^2.5.3",
         "bootstrap": "^4.5.2",
         "jquery": "^3.5.1",
-        "popper.js": "^1.16.1"
+        "popper.js": "^1.16.1",
+        "tippy.js": "^6.2.7"
     }
 }
