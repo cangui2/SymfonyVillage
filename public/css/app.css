@@ -25,6 +25,9 @@ body{
     margin-right: auto;
     margin-left: auto;
 }
+.navtext{
+    color:white !important;
+}
 #fond{
     background-image: url(../images/BACKGROUND/bande\ milieu.png);
     background-size: cover;

@@ -71,7 +71,7 @@ class Client extends Utilis
      */
     private $pay;
     
- 
+    private $roles = [];
 
     public function getCliAdresseLivraison(): ?string
     {

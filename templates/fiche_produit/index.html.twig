@@ -8,10 +8,10 @@
 
 <div class="container" id="fond">
     <div class="row produit">
-        <div class="col" style="margin-top: 60px;left: 9px;">
+        <div class="col-lg-4" style="margin-top: 60px;left: 9px;">
             <img class="img-fluid" src="{{asset('images/Produits/' ~ article.proId ~ '.' ~ article.proPhoto) }}">
         </div>
-        <div class="col" style="margin-top: 60px;">
+        <div class="col-lg-8" style="margin-top: 60px;">
             <table class="table">
                 <thead>
                     <th>{{article.proLibelle}}</th>
@@ -31,18 +31,48 @@
                         </tr>
                     </tbody>
             </table>
-            
+
             <a href={{ path('panier_add',{'id':article.proId})}} class="btn btn-success float-right">
                 <i class=" fas fa-shopping-cart mr-1"></i>
                 Ajouter
             </a>
-            <div>
-            <img src= "{{asset('/images/BODY/ESPACE CLIENT/bas de page pictos.png') }}">
-            </div>
 
         </div>
     </div>
- </div>
+    <div class="container-fluid" style="margin-top: 30px;">
+        <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">
+            <a href="{{path('produit',{id:1})}}"> <img class="img-fluid guitareHover"
+                    src="{{asset('/images/BODY/CATEGORIES guitare.png')}}" width="auto" alt=""></a>
+            <a href="{{path('produit',{id:2})}}"><img class="img-fluid batterieHover"
+                    src="{{asset('images/BODY/CATEGORIES batterie.png')}}" width="auto" alt=""></a>
+            <a href="{{path('produit',{id:3})}}"><img class="img-fluid pianoHover"
+                    src="{{asset('images/BODY/CATEGORIES piano.png')}}" width="auto" alt=""></a>
+            <a href="{{path('produit',{id:4})}}"><img class="img-fluid microHover"
+                    src="{{asset('images/BODY/CATEGORIES micro.png')}}" width="auto" alt=""></a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">
+            <a href="{{path('produit',{id:5})}}"><img class="img-fluid sonoHover"
+                    src="{{asset('images/BODY/CATEGORIES sono.png')}}" width="auto" alt=""></a>
+            <a href="{{path('produit',{id:6})}}"><img class="img-fluid casesHover"
+                    src="{{asset('images/BODY/CATEGORIES cases.png')}}" width="auto" alt=""></a>
+            <a href="{{path('produit',{id:7})}}"><img class="img-fluid cableHover"
+                    src="{{asset('images/BODY/CATEGORIES cable.png')}}" width="auto" alt=""></a>
+            <a href="{{path('produit',{id:8})}}"><img class="img-fluid saxoHover"
+                    src="{{asset('images/BODY/CATEGORIES saxo.png')}}" width="auto" alt=""></a>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 16px;">
+        <div class="col"><img class="img-fluid" src="{{asset('/images/BODY/ESPACE CLIENT/bas de page pictos.png') }}">
+        </div>
+
+    </div>
+</div>
 
 
-    {% endblock %}
+
+
+
+
+{% endblock %}
