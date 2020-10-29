@@ -4,29 +4,45 @@
 
 {% block body %}
 
-<div class="container"id="fond">
-    <div class="row produit" >
-        <div class="col-lg-12" style="/*! padding-left: 0px; */left: 10px;top: 30px">
 
-            <div class="example-wrapper">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="{{asset('images/Produits/' ~ article.proId ~ '.' ~ article.proPhoto) }}"
-                                class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{article.proLibelle}}</h5>
-                                <p class="card-text">{{article.proDescription}}</p>
-                                <p class="card-text"><small class="text-muted">Date d'ajout : {{article.proDateAjout}}</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<div class="container" id="fond">
+    <div class="row produit">
+        <div class="col" style="margin-top: 60px;left: 9px;">
+            <img class="img-fluid" src="{{asset('images/Produits/' ~ article.proId ~ '.' ~ article.proPhoto) }}">
+        </div>
+        <div class="col" style="margin-top: 60px;">
+            <table class="table">
+                <thead>
+                    <th>{{article.proLibelle}}</th>
+                    <thead>
+                    <tbody>
+                        <tr>
+                            <td>{{article.proPrix}}€</td>
+                        </tr>
+                        <tr>
+                            <td>{{article.proRef}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{article.proDateAjout}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{article.cat}}</td>
+                        </tr>
+                    </tbody>
+            </table>
+            
+            <a href={{ path('panier_add',{'id':article.proId})}} class="btn btn-success float-right">
+                <i class=" fas fa-shopping-cart mr-1"></i>
+                Ajouter
+            </a>
+            <div>
+            <img src= "{{asset('/images/BODY/ESPACE CLIENT/bas de page pictos.png') }}">
             </div>
+
         </div>
     </div>
-</div>
+ </div>
 
-{% endblock %}
+
+    {% endblock %}

@@ -3,21 +3,22 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
-<style>
-    .panier {
-       
-        background-image:  url(images/BACKGROUND/bande\ milieu.png) !important;
-   
-    }
-    td,th,h1{
-        padding-left: 25px !important;
-    }
-</style>
+{% if item == [] %}
+    <div class="container"id="fond">
+        <div class="col"style="left: 10px;">
+            <img class="img-fluid rounded mx-auto d-block"src= {{ asset('images/paniervide.jpg') }}>
+            <h1 class="display-1  text-center">Panier vide</h1>
+        </div>
+    </div>
+{% endif %}
 {% if item | length > 0%}
-<div class="container">
-    <div class="row panier">
-    <h1>Panier Client </h1>
-        <table class="table">
+
+<div class="container"id="fond">
+
+    <div class="row"style="margin-left: 0px;padding-top: 100px;">
+  <h1>Panier Client </h1>
+        <table>
+          
             <thead>
                 <tr>
                     <th>Produit</th>

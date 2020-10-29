@@ -46,12 +46,9 @@
             </tr>
             <tr>
                 <th>ProDateAjout</th>
-                <td>{{ produit.proDateAjout ? produit.proDateAjout|date('Y-m-d') : '' }}</td>
+                <td>{{ produit.proDateAjout }}</td>
             </tr>
-            <tr>
-                <th>ProDateModif</th>
-                <td>{{ produit.proDateModif ? produit.proDateModif|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
+          
             <tr>
                 <th>ProBloque</th>
                 <td>{{ produit.proBloque ? 'Yes' : 'No' }}</td>
