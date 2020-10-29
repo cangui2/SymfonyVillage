@@ -22,13 +22,13 @@
 </head>
 
 {% block header %}
-<header style="z-index: 100;position: relative;">
+<header style="z-index: 100;position: relative;left: 4px;">
 
-  <div class="container">
-    <div class="row navFond">
+  <div class="container navFond2">
+    <div class="row navFond"style="left: 2px;">
       <div id="logo" class="col-4 col-lg-4 d-inline-block" style="padding-left: 0px;padding-right: 0px;">
         <a href={{ path('index') }}><img class="logo img-fluid" src="{{asset('images/HEADER/logo village green.png')}}"
-            style="position: absolute;min-width: 100%;">
+            style="position: absolute;min-width: 100%;margin-left: -15.9px;">
       </div>
       <div class="col-lg-7" id="navFond">
         <nav class="navbar navbar-expand-lg navbar-light col-12 col-md-12 col-lg-12" id='one'>
@@ -45,10 +45,10 @@
                   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav col-lg-10" id="nav1">
                       <a class="nav-link active col-lg-4" href="#">Infos</a>
-                      <a class="nav-link espaceClient col-lg-6" id="button" href="#"> Espace client
+                      <a class="nav-link espaceClient col-lg-6" id="button" href="#"> Espace client</a>
                         <div class="row" id="tooltip">
                           <div role="tooltip">
-                            <div class="container">
+                            <div class="container"style="flex-wrap: nowrap !important;">
                               <div class="col" style="margin-top:30px">
                                 <h5>Etes-vous déja clients chez nous</h5>
                                 <form method="post" action={{ path('app_login') }}>
@@ -63,9 +63,8 @@
                                     </label>
                                   </div>
 
-                                  <button class="button" type="submit">
-                                    <img src="{{asset('images/MODAL/MODAL espace client bouton connect.png')}}" />
-                                  </button>
+                                    <input type="image" src="{{asset('images/MODAL/MODAL espace client bouton connect.png')}}"alt="Submit" />
+                                  
                                 </form>
                               </div>
                               <div class="col">
@@ -75,6 +74,10 @@
                                   gérer vos cheques
                                   -cadeaux,devenir partenaire et bien plus encore.
                                 </p>
+                                
+                                <a href="{{ path('security_registration') }}"style="max-width: 100%;">
+                                <input type="image" src="{{asset('images/MODAL/MODAL espace client bouton inscrire.png')}}"  />
+                                </a>
                               </div>
                             </div>
                           </div>
@@ -96,7 +99,7 @@
                     </div>
                   </div>
                 </div>
-                <nav class="col-lg-12 row">
+                <nav class="col-lg-12 row"style="padding-right: 0px;margin-right: 0px;">
                   <ul class="list-nav row">
                     <li class="item " id="guitare">guitare
                       <ul class="drop">

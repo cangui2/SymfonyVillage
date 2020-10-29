@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("admin2/produit")
- */
-class ProduitController extends AbstractController
+
+class ProduitAdminController extends AbstractController
 {
     /**
-     * @Route("/", name="produit_index", methods={"GET"})
+     * @Route("/produit", name="produit_index", methods={"GET"})
      */
     public function index(ProduitRepository $produitRepository): Response
     {

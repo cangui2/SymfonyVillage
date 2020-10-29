@@ -2,27 +2,37 @@
 body{
     background-color: beige;
     background-image: url(../images/BACKGROUND/background-village.png);
-
+    max-width: 1990px;
 }
 
 .navFond{
-    background-image: url(../images/HEADER/3bandes.png);
-   background-size: cover;
+  
     width: 100%;
     margin-left: 0px !important;
     z-index: 0;
-   
+    max-height: 190px !important;
+  
     position: relative;
     /*
     top: -178px;
     */
 }
-
+.navFond2{
+    background-image: url(../images/HEADER/3bandes.png) !important;
+    background-size: cover !important;
+    width: 100% !important;
+    max-width: 1115px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
 #fond{
     background-image: url(../images/BACKGROUND/bande\ milieu.png);
     background-size: cover;
     margin:auto;
     margin-top: -15px;
+    width:auto;
+    min-height: 1300px;
+    padding-left: 0px;
     /*
     margin-top: -243px;
     /*
@@ -31,6 +41,10 @@ body{
   
    
 
+}
+.section{
+    margin-top: 50px;
+    margin-left: 1px !important;
 }
 #logo{
     

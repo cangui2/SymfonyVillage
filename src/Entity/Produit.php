@@ -209,9 +209,9 @@ class Produit
         return $this;
     }
 
-    public function getProDateAjout(): ?\DateTimeInterface
+    public function getProDateAjout(): string
     {
-        return $this->proDateAjout;
+        return $this->proDateAjout->format('d/m/Y');
     }
 
     public function setProDateAjout(\DateTimeInterface $proDateAjout): self
@@ -221,9 +221,9 @@ class Produit
         return $this;
     }
 
-    public function getProDateModif(): ?\DateTimeInterface
+    public function getProDateModif(): string
     {
-        return $this->proDateModif;
+        return $this->proDateModif->format('d/m/Y');
     }
 
     public function setProDateModif(?\DateTimeInterface $proDateModif): self
@@ -256,6 +256,6 @@ class Produit
 
         return $this;
     }
-
+   
 
 }

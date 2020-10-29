@@ -6,43 +6,49 @@
 
 
 <section >
-    <div class="container">
-        <div class="row produit"id="fond">
-            <div class="col-lg-4"style="/*! padding-left: 0px; */left: 10px;top: 30px">
-                <div class="vertical-menu">
-
-                    <a href="#" class="active">Home</a>
-                    
-                     {% for sousCategorie in aSousCategorie  %} 
-                    
-                    
-                    <a href="{{ path('produit',{id:sousCategorie.catId})}}">{{sousCategorie.catNom}}</a>
-                   
-                   
-           {% endfor %} 
-                
-                </div>
-            </div>
+    <div class="container"id="fond"style="margin-left: 375px;">
+        <div class="row col-lg-12 ">
             
-                {% for Produits in produit %} {# boucle 1er tableau cat #}
-                 
-                
-                
-                
-                 
-                    <div class="col-lg-4">
-                        <div class="card"style="width: 15rem;">
-                            <img src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="Denim Jeans" style="width:100%">
-                            <h1>{{Produits.cat.catNom}}</h1>
-                            <p class="price">{{Produits.proPrix}}€</p>
-                            <p class='description'>{{Produits.proDescription}}</p>
-                            <a href={{ path('panier_add',{'id':Produits.proId})}} class="btn btn-success float-right">
-                            <i class=" fas fa-shopping-cart mr-1"></i>
-                            Ajouter
-                            </a>
-                        </div>
+                <div class="col-lg-4"style="/*! padding-left: 0px; */left: 10px;top: 30px">
+                    <div class="vertical-menu">
+
+                        <a href="#" class="active">Home</a>
+                        
+                        {% for sousCategorie in aSousCategorie  %} 
+                        
+                        
+                        <a href="{{ path('produit',{id:sousCategorie.catId})}}">{{sousCategorie.catNom}}</a>
+                    
+                    
+                {% endfor %} 
+                    
                     </div>
-           
-           {% endfor %} 
+                </div>
+                
+                    {% for Produits in produit %} {# boucle 1er tableau cat #}
+                    
+                    
+                    
+                    
+                    
+                        <div class="col-lg-4">
+                            <div class="card"style="width: 15rem;">
+                                <a href ={{ path('fiche_produit',{'id':Produits.proId}) }}>
+                                <img src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="Denim Jeans" style="width:100%">
+                                </a>
+                                <h1>{{Produits.cat.catNom}}</h1>
+                                <p class="price">{{Produits.proPrix}}€</p>
+                                <p class='description'>{{Produits.proDescription}}</p>
+                                <a href={{ path('panier_add',{'id':Produits.proId})}} class="btn btn-success float-right">
+                                <i class=" fas fa-shopping-cart mr-1"></i>
+                                Ajouter
+                                </a>
+                            </div>
+                        </div>
+     
+                    {% endfor %}
+            
+        </div>
+    </div> 
 </section>
 {% endblock %}
