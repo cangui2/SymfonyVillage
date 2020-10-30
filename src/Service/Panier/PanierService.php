@@ -64,6 +64,15 @@ class PanierService{
         return $total;
         
     }
-
+    public function getTotal2():float{
+        $total=0;
+        
+        foreach ($this->getFullPanier() as $item ) {
+           $totalItem=$item['quantity'];
+           $total +=$totalItem;
+        }
+        return $total;
+        
+    }
 
 }

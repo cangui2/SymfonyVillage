@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\Panier\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,7 +23,7 @@ class AfficheProduitController extends AbstractController
      * @Route("/affiche/produit={id}", name="produit")
      */
    
-    public function afficheProduit($id){
+    public function afficheProduit($id,PanierService $panierService){
         $produit=[];
         $aSousCategorie=[];
         $compteur=[];
@@ -78,7 +79,7 @@ class AfficheProduitController extends AbstractController
 
 
 
-        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie,'categorie'=>$categories]);
+        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie,'categorie'=>$categories,'item' =>$panierService->getFullPanier(),]);
         
             }
     

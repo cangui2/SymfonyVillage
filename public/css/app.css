@@ -45,6 +45,20 @@ body{
    
 
 }
+.notify-badge{
+    position: absolute;
+    background: rgba(0,0,255,1);
+    height:0.8rem;
+    top:1.2rem;
+    right:55px;
+    width:0.8rem;
+    text-align: center;
+   
+    font-size: 0.7rem;
+    border-radius: 50%;
+    color:white;
+    
+}
 .section{
     margin-top: 50px;
     margin-left: 1px !important;

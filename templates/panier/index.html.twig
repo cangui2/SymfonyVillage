@@ -3,6 +3,7 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
+
 {% if item == [] %}
     <div class="container"id="fond">
         <div class="col"style="left: 10px;">
@@ -14,6 +15,13 @@
 {% if item | length > 0%}
 
 <div class="container"id="fond">
+ 
+                      <a class="nav-link col-lg-2" href="{{ path('panier') }}"><img src="images\HEADER\picto panier.png"
+                          alt=""></a>
+                      <a href="#">
+                        <span class="notify-badge"></span>
+                        
+                      </a>
 
     <div class="row"style="margin-left: 0px;padding-top: 100px;">
   <h1>Panier Client </h1>
