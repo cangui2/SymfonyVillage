@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Utilis;
+use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +25,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name="security_registration")
      */
-    public function registration(Request $request,EntityManagerInterface $manager,UserPasswordEncoderInterface $encoder){ 
+    public function registration(Request $request,EntityManagerInterface $manager,UserPasswordEncoderInterface $encoder,PanierService $panierService){ 
         
         $user=new Client();
        
@@ -48,14 +49,15 @@ class SecurityController extends AbstractController
 
 
         return $this->render('security/registration.html.twig',[
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'item' =>$panierService->getFullPanier(),
         ]);
     }
     
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils,PanierService $panierService): Response
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -66,7 +68,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error,'item' =>$panierService->getFullPanier()]);
     }
 
     /**

@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Pr„©parer
+ * Preparer
  *
  * @ORM\Table(name="pr√©parer", indexes={@ORM\Index(name="FK_B085C7C3748C0F37", columns={"com_id"})})
  * @ORM\Entity
  */
-class Pr„©parer
+class Preparer
 {
     /**
      * @var \Commande

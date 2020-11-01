@@ -79,7 +79,7 @@ class AfficheProduitController extends AbstractController
 
 
 
-        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie,'categorie'=>$categories,'item' =>$panierService->getFullPanier(),]);
+        return $this->render('produit/produit.html.twig',['produit'=>$produit,'aSousCategorie'=>$aSousCategorie,'categorie'=>$categories,'item' =>$panierService->getTotal2(),]);
         
             }
     
