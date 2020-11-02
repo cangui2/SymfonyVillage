@@ -19,7 +19,7 @@ class Produit
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $proId;
+    protected $proId;
 
     /**
      * @var string
@@ -257,5 +257,6 @@ class Produit
         return $this;
     }
    
+    
 
 }

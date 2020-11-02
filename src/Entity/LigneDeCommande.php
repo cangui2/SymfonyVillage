@@ -43,7 +43,7 @@ class LigneDeCommande
      *   @ORM\JoinColumn(name="pro_id", referencedColumnName="pro_id")
      * })
      */
-    private $pro;
+    protected $pro;
 
     public function getLigId(): ?int
     {
@@ -74,17 +74,17 @@ class LigneDeCommande
         return $this;
     }
 
-    public function getPro(): ?Produit
+    public function getPro()
     {
         return $this->pro;
     }
 
-    public function setPro(?Produit $pro): self
+    public function setPro(?int $pro)
     {
         $this->pro = $pro;
 
         return $this;
     }
-
+   
 
 }

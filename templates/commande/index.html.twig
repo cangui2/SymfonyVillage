@@ -17,8 +17,6 @@
 
 <div class="container"id="fond">
  
-                      
-
     <div class="row"style="margin-left: 0px;padding-top: 100px;">
   <h1>Panier Client </h1>
         <table>
@@ -36,24 +34,17 @@
         
 
         <tbody>
-        
             {% for items  in item2 %}
-<pre>
-    {{ dump(item2) }}
-</pre>
+
             <thead>
                 <tr>
                     <td>{{items.produit.proLibelle}}</td>
                     <td>{{items.produit.proPrix}}</td>
                     <td>{{items.quantity}}</td>
-                  
                     <td>{{items.produit.proPrix * items.quantity}}</td>
-                    <td>
-                        <a href={{ path('panier_remove',{'id': items.produit.proId}) }} class="btn btn-primary">Primary</a>
-                        <i class="fas fa-trash"></i>
-                    </td>
+                   
                 </tr>
-              
+
             </thead>
 
             {% endfor %}
@@ -102,7 +93,6 @@
 {% else %}
 
 {% endif %}
-    
-   
+
 
 {% endblock %}

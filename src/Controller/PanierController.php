@@ -2,27 +2,42 @@
 
 namespace App\Controller;
 
-
+use App\Entity\LigneDeCommande;
+use App\Form\LigneDeCommandeType;
 use App\Service\Panier\PanierService;
 
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PanierController extends AbstractController
 {
     /**
      * @Route("/panier", name="panier")
      */
-    public function index(PanierService $panierService )
+    public function index(PanierService $panierService,Request $request):Response
     {
-       
-      
+        $ligneDeCommande=new LigneDeCommande();
+        $form =$this->createForm(LigneDeCommandeType::class,$ligneDeCommande);
+        $form ->handleRequest($request);
+
+        if($form->isSubmitted()&& $form->isValid()){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($ligneDeCommande);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('commande');
+        }
+
+
         return $this->render('panier/index.html.twig', [
             'item2' =>$panierService->getFullPanier(),
             'item'=>$panierService->getTotal2(),
-            'total'=>$panierService->getTotal()
+            'total'=>$panierService->getTotal(),
+            'lignecommande'=>$ligneDeCommande,
+            'form'=>$form->createView(),
         ]);
     }
     /**
@@ -46,4 +61,6 @@ class PanierController extends AbstractController
 
         return $this->redirectToRoute("panier");
     }
+    
+    
 }
