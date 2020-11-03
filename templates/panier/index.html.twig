@@ -38,9 +38,9 @@
         <tbody>
         
             {% for items  in item2 %}
-<pre>
-    {{ dump(item2) }}
-</pre>
+                <pre>
+                    {{ dump(item2) }}
+                </pre>
             <thead>
                 <tr>
                     <td>{{items.produit.proLibelle}}</td>
@@ -53,7 +53,7 @@
                         <i class="fas fa-trash"></i>
                     </td>
                 </tr>
-              
+
             </thead>
 
             {% endfor %}
@@ -67,6 +67,9 @@
                    
                 </tr>
         </tfoot>
+        {{ form_start(form) }}
+        {{ form_widget(form.save, { 'label': 'Click me' }) }}
+        {{ form_end(form) }}
        </table> 
     </div>
     <div class="container-fluid" style="margin-top: 30px;">

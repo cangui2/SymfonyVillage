@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,7 +20,7 @@ class Produit
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $proId;
+    private $proId;
 
     /**
      * @var string
@@ -107,7 +108,7 @@ class Produit
      * })
      */
     private $cat;
-
+    
     public function getProId(): ?int
     {
         return $this->proId;
@@ -257,6 +258,11 @@ class Produit
         return $this;
     }
    
+    public function __toString():?string{
+    
+    return $this->proId;
+    }
+    
+    }
     
 
-}

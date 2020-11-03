@@ -3,32 +3,54 @@
 namespace App\Controller;
 
 use App\Entity\LigneDeCommande;
+use Doctrine\DBAL\DriverManager;
 use App\Form\LigneDeCommandeType;
+
+
+use App\Form\LigneDeCommande1Type;
 use App\Service\Panier\PanierService;
-
-
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PanierController extends AbstractController
 {
     /**
-     * @Route("/panier", name="panier")
+     * @Route("/panier", name="panier",methods={"GET","POST"})
      */
-    public function index(PanierService $panierService,Request $request):Response
+    public function index(PanierService $panierService,Request $request,EntityManagerInterface $em):Response
     {
         $ligneDeCommande=new LigneDeCommande();
-        $form =$this->createForm(LigneDeCommandeType::class,$ligneDeCommande);
+        $form =$this->createForm(LigneDeCommande1Type::class,$ligneDeCommande);
         $form ->handleRequest($request);
+       
 
-        if($form->isSubmitted()&& $form->isValid()){
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($ligneDeCommande);
-            $entityManager->flush();
+        if($form->isSubmitted()){
+            
+            $panier=$panierService->getFullPanier();
+            foreach ($panier as $key => $value) {
+                
+                $proId=$value['produit'];
+                
+                $quantity=$value['quantity'];
+                 // you can fetch the EntityManager via $this->getDoctrine()
+        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
+        $entityManager = $this->getDoctrine()->getManager();
+    
+        $product = new LigneDeCommande();
+        $product->setPro($proId);
+        $product->setLigQuantite($quantity);
+       
 
-            return $this->redirectToRoute('commande');
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($product);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+             }
         }
 
 

@@ -2,35 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Produit;
+use App\Entity\LigneDeCommande;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class ProduitType extends AbstractType
+class LigneDeCommande1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('proLibelle')
-            ->add('proDescription')
-            ->add('proPrix')
-            ->add('proRef')
-            ->add('proStock')
-            ->add('proStockAlerte')
-            ->add('proCouleur')
-            ->add('proPhoto')
             
-            
-            ->add('proBloque')
-            ->add('cat')
+            ->add('save', SubmitType::class, [
+                'attr' => ['class' => 'submit'],
+            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Produit::class,
+            'data_class' => LigneDeCommande::class,
         ]);
     }
 }

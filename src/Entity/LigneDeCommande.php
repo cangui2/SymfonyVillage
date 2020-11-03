@@ -29,9 +29,9 @@ class LigneDeCommande
     private $ligQuantite;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="lig_remise", type="string", length=255, nullable=false)
+     * @ORM\Column(name="lig_remise", type="string", length=255, nullable=true)
      */
     private $ligRemise;
 
@@ -43,48 +43,108 @@ class LigneDeCommande
      *   @ORM\JoinColumn(name="pro_id", referencedColumnName="pro_id")
      * })
      */
-    protected $pro;
+    private $pro;
 
-    public function getLigId(): ?int
+
+
+    /**
+     * Get the value of ligId
+     *
+     * @return  int
+     */ 
+    public function getLigId()
     {
         return $this->ligId;
     }
 
-    public function getLigQuantite(): ?int
+    /**
+     * Set the value of ligId
+     *
+     * @param  int  $ligId
+     *
+     * @return  self
+     */ 
+    public function setLigId(int $ligId)
+    {
+        $this->ligId = $ligId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ligQuantite
+     *
+     * @return  int
+     */ 
+    public function getLigQuantite()
     {
         return $this->ligQuantite;
     }
 
-    public function setLigQuantite(int $ligQuantite): self
+    /**
+     * Set the value of ligQuantite
+     *
+     * @param  int  $ligQuantite
+     *
+     * @return  self
+     */ 
+    public function setLigQuantite(int $ligQuantite)
     {
         $this->ligQuantite = $ligQuantite;
 
         return $this;
     }
 
-    public function getLigRemise(): ?string
+    /**
+     * Get the value of ligRemise
+     *
+     * @return  string|null
+     */ 
+    public function getLigRemise()
     {
         return $this->ligRemise;
     }
 
-    public function setLigRemise(string $ligRemise): self
+    /**
+     * Set the value of ligRemise
+     *
+     * @param  string|null  $ligRemise
+     *
+     * @return  self
+     */ 
+    public function setLigRemise($ligRemise)
     {
         $this->ligRemise = $ligRemise;
 
         return $this;
     }
 
+    /**
+     * Get the value of pro
+     *
+     * @return  \Produit
+     */ 
     public function getPro()
     {
         return $this->pro;
     }
 
-    public function setPro(?int $pro)
+    /**
+     * Set the value of pro
+     *
+     * @param  \Produit  $pro
+     *
+     * @return  self
+     */ 
+    public function setPro($pro)
     {
         $this->pro = $pro;
 
         return $this;
     }
-   
 
+    public function __toString()
+    {
+        return $this->pro;
+    }
 }
