@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Commande
  *
- * @ORM\Table(name="commande", indexes={@ORM\Index(name="lig_id", columns={"lig_id"})})
+ * @ORM\Table(name="commande")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CommandeRepository")
  */
 class Commande
 {
@@ -22,9 +24,9 @@ class Commande
     private $comId;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="com_ref", type="string", length=255, nullable=false)
+     * @ORM\Column(name="com_ref", type="string", length=255, nullable=true)
      */
     private $comRef;
 
@@ -36,16 +38,16 @@ class Commande
     private $comRemise;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="com_date", type="date", nullable=false)
+     * @ORM\Column(name="com_date", type="date", nullable=true)
      */
     private $comDate;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="com_mode_paiement", type="string", length=255, nullable=false)
+     * @ORM\Column(name="com_mode_paiement", type="string", length=255, nullable=true)
      */
     private $comModePaiement;
 
@@ -64,24 +66,15 @@ class Commande
     private $comDatePaiement;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="com_status", type="string", length=255, nullable=false)
+     * @ORM\Column(name="com_status", type="string", length=255, nullable=true)
      */
     private $comStatus;
-
-    /**
-     * @var \LigneDeCommande
-     *
-     * @ORM\ManyToOne(targetEntity="LigneDeCommande")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="lig_id", referencedColumnName="lig_id")
-     * })
-     */
-    private $lig;
-
+    
     public function getComId(): ?int
     {
+       
         return $this->comId;
     }
 
@@ -90,7 +83,7 @@ class Commande
         return $this->comRef;
     }
 
-    public function setComRef(string $comRef): self
+    public function setComRef(?string $comRef): self
     {
         $this->comRef = $comRef;
 
@@ -114,7 +107,7 @@ class Commande
         return $this->comDate;
     }
 
-    public function setComDate(\DateTimeInterface $comDate): self
+    public function setComDate(?\DateTimeInterface $comDate): self
     {
         $this->comDate = $comDate;
 
@@ -126,7 +119,7 @@ class Commande
         return $this->comModePaiement;
     }
 
-    public function setComModePaiement(string $comModePaiement): self
+    public function setComModePaiement(?string $comModePaiement): self
     {
         $this->comModePaiement = $comModePaiement;
 
@@ -162,24 +155,28 @@ class Commande
         return $this->comStatus;
     }
 
-    public function setComStatus(string $comStatus): self
+    public function setComStatus(?string $comStatus): self
     {
         $this->comStatus = $comStatus;
 
         return $this;
     }
 
-    public function getLig(): ?LigneDeCommande
-    {
-        return $this->lig;
-    }
 
-    public function setLig(?LigneDeCommande $lig): self
+
+    /**
+     * Set the value of comId
+     *
+     * @param  int  $comId
+     *
+     * @return  self
+     */ 
+    public function setComId(int $comId)
     {
-        $this->lig = $lig;
+        $this->comId = $comId;
 
         return $this;
     }
 
-
+    
 }

@@ -182,5 +182,10 @@ class Employe extends Utilis
 
 }
 
+    public function getIdUtilis(): ?int
+    {
+        return $this->idUtilis;
+    }
+
 
 }

@@ -38,9 +38,7 @@
         <tbody>
         
             {% for items  in item2 %}
-                <pre>
-                    {{ dump(item2) }}
-                </pre>
+            
             <thead>
                 <tr>
                     <td>{{items.produit.proLibelle}}</td>
@@ -67,10 +65,11 @@
                    
                 </tr>
         </tfoot>
-        {{ form_start(form) }}
-        {{ form_widget(form.save, { 'label': 'Click me' }) }}
-        {{ form_end(form) }}
+      
        </table> 
+        {{ form_start(form)}}
+        {{ form_widget(form.save, { 'label': 'Valider Panier' }) }}
+        {{ form_end(form) }}
     </div>
     <div class="container-fluid" style="margin-top: 30px;">
         <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">

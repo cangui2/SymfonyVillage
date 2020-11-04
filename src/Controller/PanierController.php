@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\LigneDeCommande;
 use Doctrine\DBAL\DriverManager;
 use App\Form\LigneDeCommandeType;
@@ -28,8 +29,9 @@ class PanierController extends AbstractController
        
 
         if($form->isSubmitted()){
-            
-            $panier=$panierService->getFullPanier();
+           
+        $panier=$panierService->getFullPanier();
+
             foreach ($panier as $key => $value) {
                 
                 $proId=$value['produit'];
@@ -37,20 +39,33 @@ class PanierController extends AbstractController
                 $quantity=$value['quantity'];
                  // you can fetch the EntityManager via $this->getDoctrine()
         // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
-        $entityManager = $this->getDoctrine()->getManager();
     
+        $entityManager = $this->getDoctrine()->getManager();
         $product = new LigneDeCommande();
+        
         $product->setPro($proId);
         $product->setLigQuantite($quantity);
-       
-
+        
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);
 
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
+        
+        
+  
+        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $commande = new Commande();
+        $commande->setComRef('test');
+        
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($commande);
 
-             }
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+  
+            
         }
 
 
@@ -59,6 +74,7 @@ class PanierController extends AbstractController
             'item'=>$panierService->getTotal2(),
             'total'=>$panierService->getTotal(),
             'lignecommande'=>$ligneDeCommande,
+            
             'form'=>$form->createView(),
         ]);
     }

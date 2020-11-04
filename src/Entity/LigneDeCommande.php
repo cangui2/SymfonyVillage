@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * LigneDeCommande
  *
- * @ORM\Table(name="ligne_de_commande", uniqueConstraints={@ORM\UniqueConstraint(name="pro_id", columns={"pro_id"})})
+ * @ORM\Table(name="ligne_de_commande", uniqueConstraints={@ORM\UniqueConstraint(name="pro_id", columns={"pro_id"})}, indexes={@ORM\Index(name="FK_ligne_de_commande_commande", columns={"com_id"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\LigneDeCommandeRepository")
  */
 class LigneDeCommande
 {
@@ -45,106 +47,84 @@ class LigneDeCommande
      */
     private $pro;
 
-
-
     /**
-     * Get the value of ligId
+     * @var \Commande
      *
-     * @return  int
-     */ 
-    public function getLigId()
+     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="com_id", referencedColumnName="com_id")
+     * })
+     */
+    private $com;
+    
+
+    public function getLigId(): ?int
     {
         return $this->ligId;
     }
 
-    /**
-     * Set the value of ligId
-     *
-     * @param  int  $ligId
-     *
-     * @return  self
-     */ 
-    public function setLigId(int $ligId)
-    {
-        $this->ligId = $ligId;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of ligQuantite
-     *
-     * @return  int
-     */ 
-    public function getLigQuantite()
+    public function getLigQuantite(): ?int
     {
         return $this->ligQuantite;
     }
 
-    /**
-     * Set the value of ligQuantite
-     *
-     * @param  int  $ligQuantite
-     *
-     * @return  self
-     */ 
-    public function setLigQuantite(int $ligQuantite)
+    public function setLigQuantite(int $ligQuantite): self
     {
         $this->ligQuantite = $ligQuantite;
 
         return $this;
     }
 
-    /**
-     * Get the value of ligRemise
-     *
-     * @return  string|null
-     */ 
-    public function getLigRemise()
+    public function getLigRemise(): ?string
     {
         return $this->ligRemise;
     }
 
-    /**
-     * Set the value of ligRemise
-     *
-     * @param  string|null  $ligRemise
-     *
-     * @return  self
-     */ 
-    public function setLigRemise($ligRemise)
+    public function setLigRemise(?string $ligRemise): self
     {
         $this->ligRemise = $ligRemise;
 
         return $this;
     }
 
-    /**
-     * Get the value of pro
-     *
-     * @return  \Produit
-     */ 
-    public function getPro()
+    public function getPro(): ?Produit
     {
         return $this->pro;
     }
 
-    /**
-     * Set the value of pro
-     *
-     * @param  \Produit  $pro
-     *
-     * @return  self
-     */ 
-    public function setPro($pro)
+    public function setPro(?Produit $pro): self
     {
         $this->pro = $pro;
 
         return $this;
     }
 
-    public function __toString()
+    
+
+
+
+
+    /**
+     * Get the value of com
+     *
+     * @return  \Commande
+     */ 
+    public function getCom()
     {
-        return $this->pro;
+        return $this->com;
+    }
+
+    /**
+     * Set the value of com
+     *
+     * @param  \Commande  $com
+     *
+     * @return  self
+     */ 
+    public function setCom(?int $com)
+    {
+        $this->com = $com;
+
+        return $this;
     }
 }

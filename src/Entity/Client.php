@@ -156,4 +156,9 @@ class Client extends Utilis
         
        return array_unique($Roles);
    }
+
+    public function getIdUtilis(): ?int
+    {
+        return $this->idUtilis;
+    }
 }
