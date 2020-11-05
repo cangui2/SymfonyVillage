@@ -28,45 +28,48 @@ class PanierController extends AbstractController
         $form ->handleRequest($request);
        
 
-        if($form->isSubmitted()){
-           
-        $panier=$panierService->getFullPanier();
+                if($form->isSubmitted())
+                {
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $commande = new Commande();
+                    
+                    $commande->setComRef('test');
+                   
+                   
+                    // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                    $entityManager->persist($commande);
 
-            foreach ($panier as $key => $value) {
+                    // actually executes the queries (i.e. the INSERT query)
+                    $entityManager->flush();
+                   
+                    
+                        $panier=$panierService->getFullPanier();
+
+                            foreach ($panier as $key => $value) {
+                                
+                                        $proId=$value['produit'];
+                                        
+                                        $quantity=$value['quantity'];
+                                        // you can fetch the EntityManager via $this->getDoctrine()
+                                // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
+                            
+                                $entityManager = $this->getDoctrine()->getManager();
+                                $product = new LigneDeCommande();
+                                $product->setCom($commande);
+                                $product->setPro($proId);
+                                $product->setLigQuantite($quantity);
+                                
+                                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                                $entityManager->persist($product);
+
+                                // actually executes the queries (i.e. the INSERT query)
+                                $entityManager->flush();
+        
+                             }
+                    
+                    return $this->redirectToRoute('commande');
                 
-                $proId=$value['produit'];
-                
-                $quantity=$value['quantity'];
-                 // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
-    
-        $entityManager = $this->getDoctrine()->getManager();
-        $product = new LigneDeCommande();
-        
-        $product->setPro($proId);
-        $product->setLigQuantite($quantity);
-        
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($product);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-        
-        
-  
-        }
-        $entityManager = $this->getDoctrine()->getManager();
-        $commande = new Commande();
-        $commande->setComRef('test');
-        
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($commande);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-  
-            
-        }
+                }
 
 
         return $this->render('panier/index.html.twig', [

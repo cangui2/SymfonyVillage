@@ -121,7 +121,7 @@ class LigneDeCommande
      *
      * @return  self
      */ 
-    public function setCom(?int $com)
+    public function setCom(?Commande $com)
     {
         $this->com = $com;
 
