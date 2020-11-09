@@ -46,7 +46,11 @@
                   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav col-lg-10" id="nav1">
                       <a class="nav-link active col-lg-4" href="#">Infos</a>
-                      <a class="nav-link espaceClient col-lg-6" id="button" href="#"> Espace client</a>
+                      {% if is_granted('ROLE_ADMIN') %}
+                      <a class="nav-link espaceClient col-lg-6" id="button" href={{ path('admin2') }}> Espace client</a>
+                      {% else %}
+                      <a class="nav-link espaceClient col-lg-6" id="button" href={{ path('espace_client_contoller') }}> Espace client</a>
+                      {% endif %}
                       <div class="row" id="tooltip">
                         <div role="tooltip">
                           <div class="container" style="flex-wrap: nowrap !important;">

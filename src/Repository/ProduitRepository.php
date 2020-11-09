@@ -22,7 +22,7 @@ class ProduitRepository extends ServiceEntityRepository
    
     //  * @return Produit[] Returns an array of Produit objects
     //  */
-    /*
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,7 +34,7 @@ class ProduitRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Produit
