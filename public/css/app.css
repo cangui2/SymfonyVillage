@@ -1,23 +1,23 @@
-
-body{
+body {
     background-color: beige;
     background-image: url(../images/BACKGROUND/background-village.png);
     max-width: 1990px;
 }
 
-.navFond{
-  
+.navFond {
+
     width: 100%;
     margin-left: 0px !important;
     z-index: 0;
     max-height: 190px !important;
-  
+
     position: relative;
     /*
     top: -178px;
     */
 }
-.navFond2{
+
+.navFond2 {
     background-image: url(../images/HEADER/3bandes.png) !important;
     background-size: cover !important;
     width: 100% !important;
@@ -25,15 +25,17 @@ body{
     margin-right: auto;
     margin-left: auto;
 }
-.navtext{
-    color:white !important;
+
+.navtext {
+    color: white !important;
 }
-#fond{
+
+#fond {
     background-image: url(../images/BACKGROUND/bande\ milieu.png);
     background-size: cover;
-    margin:auto;
+    margin: auto;
     margin-top: -15px;
-    width:auto;
+    width: auto;
     min-height: 1300px;
     padding-left: 0px;
     /*
@@ -41,33 +43,37 @@ body{
     /*
     background-repeat: cover;
     width: 100%;*/
-  
-   
+
+
 
 }
-.notify-badge{
+
+.notify-badge {
     position: absolute;
-    background: rgba(0,0,255,1);
-    height:0.8rem;
-    top:1.2rem;
-    right:55px;
-    width:0.8rem;
+    background: rgba(0, 0, 255, 1);
+    height: 0.8rem;
+    top: 1.2rem;
+    right: 55px;
+    width: 0.8rem;
     text-align: center;
-   
+
     font-size: 0.7rem;
     border-radius: 50%;
-    color:white;
-    
+    color: white;
+
 }
-.section{
+
+.section {
     margin-top: 50px;
     margin-left: 1px !important;
 }
-#logo{
-    
-    z-index: 10000 ;
+
+#logo {
+
+    z-index: 10000;
 }
-#pad{
+
+#pad {
     padding-left: 0px !important;
 }
 
@@ -75,94 +81,101 @@ body{
     /* border: 1px solid black ; */
 }
 
-.guitare{
+.guitare {
     text-align: center;
-    border: 1px solid black ;
+    border: 1px solid black;
 }
 
-.list-nav{
+.list-nav {
     width: 100%;
 }
-.item{
+
+.item {
     display: inline-block !important;
     vertical-align: top;
     margin: 10px;
     position: relative;
     width: 100px;
     text-align: center;
+    
 }
 
-.item ul{
+.item ul {
     padding: 0;
 }
+
 /*
 .subitem{
     list-style-type: none;
 }*/
 
-.drop,.drop3{
-   background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important ;
-   border-color: black !important;
-   display: none;
-   background-repeat: no-repeat;
-   /* appearance: none !important; */
-   position: absolute;
-   background-size: cover;
-   /* width: 234px; */
-   height: 316px;
-   /* top: 0%; */
-   left: -75px!important;
-   z-index: 10000 !important;
-   /* border: 1px solid black ; */
-   
-}
-.drop2{
+.drop,
+.drop3 {
+    background-image: url(../images/MODAL/MODAL\ guitare\ encadrer.png) !important;
     border-color: black !important;
-   display: none;
-   background-repeat: no-repeat;
-   /* appearance: none !important; */
-   position: absolute;
-   background-size: cover;
-   /* width: 234px; */
-   height: 316px;
-   /* top: 0%; */
-   left: -75px!important;
-   z-index: 10000 !important;
-   /* border: 1px solid black ; */
+    display: none;
+    background-repeat: no-repeat;
+    /* appearance: none !important; */
+    position: absolute;
+    background-size: cover;
+    /* width: 234px; */
+    height: 316px;
+    /* top: 0%; */
+    left: -75px !important;
+    z-index: 10000 !important;
+    /* border: 1px solid black ; */
+
 }
-.item img{
+
+.drop2 {
+    border-color: black !important;
+    display: none;
+    background-repeat: no-repeat;
+    /* appearance: none !important; */
+    position: absolute;
+    background-size: cover;
+    /* width: 234px; */
+    height: 316px;
+    /* top: 0%; */
+    left: -75px !important;
+    z-index: 10000 !important;
+    /* border: 1px solid black ; */
+}
+
+.item img {
     visibility: hidden;
+  
     /* position: absolute; */
 }
 
-.navSous{
+.navSous {
     margin-top: 10%;
     margin-left: 10%;
-   
+
 }
 
-.promoG{
-    left:-20% !important;
+.promoG {
+    left: -20% !important;
     position: absolute;
 }
 
-#nav2{
+#nav2 {
     font-size: 1.5rem;
-    color:white;
+    color: white;
 }
 
-#nav3{
+#nav3 {
     font-size: 1.1rem;
     margin-left: -40px;
 }
 
-.produit{
-    margin-right:0px!important;
+.produit {
+    margin-right: 0px !important;
     margin-left: 0px !important;
-   
+
 }
-    
-  
+
+
 
 
 
@@ -217,71 +230,177 @@ body{
     background-color: #4CAF50;
     color: rgb(211, 206, 206);
 }
-  
-.description{
+
+.description {
     height: 150px !important;
 }
-.custab{
+
+.custab {
     border: 1px solid #ccc;
     padding: 5px;
     margin: 5% 0;
     box-shadow: 3px 3px 2px #ccc;
     transition: 0.5s;
-    }
-.custab:hover{
+}
+
+.custab:hover {
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
-    }
+}
 
-.texte{
+.texte {
     font-size: 0.7rem !important;
 }
-    #tooltip {
-        background-image: url('../images/MODAL/MODAL espace client encadrer.png')!important;
-        min-width: 535px ;
-        min-height: 290px;
-        color: white;
-        font-weight: bold;
-        padding: 4px 8px;
-        font-size: 13px;
-        border-radius: 4px;
-        display: none;
-        z-index: 1;
-        
-        
-      }
 
-      #tooltip[data-show] {
-        display: block;
-       
-      }
+#tooltip {
+    background-image: url('../images/MODAL/MODAL espace client encadrer.png') !important;
+    min-width: 535px;
+    min-height: 290px;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    display: none;
+    z-index: 1;
 
-      #arrow,
-      #arrow::before {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        z-index: -1;
-      }
 
-      #arrow::before {
-        content: '';
-        transform: rotate(45deg);
-        
-      }
+}
 
-      #tooltip[data-popper-placement^='top'] > #arrow {
-        bottom: -4px;
-      }
+#tooltip[data-show] {
+    display: block;
 
-      #tooltip[data-popper-placement^='bottom'] > #arrow {
-        top: -4px;
-      }
+}
 
-      #tooltip[data-popper-placement^='left'] > #arrow {
-        right: -4px;
-      }
+#arrow,
+#arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    z-index: -1;
+}
 
-      #tooltip[data-popper-placement^='right'] > #arrow {
-        left: -4px;
-      }
+#arrow::before {
+    content: '';
+    transform: rotate(45deg);
+
+}
+
+#tooltip[data-popper-placement^='top']>#arrow {
+    bottom: -4px;
+}
+
+#tooltip[data-popper-placement^='bottom']>#arrow {
+    top: -4px;
+}
+
+#tooltip[data-popper-placement^='left']>#arrow {
+    right: -4px;
+}
+
+#tooltip[data-popper-placement^='right']>#arrow {
+    left: -4px;
+}
+
+
+#tooltip2 {
+    background-image: url("../images/MODAL/MODAL guitare encadrer.png") !important;
+    min-width: 235px;
+    min-height: 290px;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    display: none;
+    
+    z-index: 1;
+
+
+}
+
+#tooltip2[data-show2] {
+    display: block;
+   
+}
+
+#arrow2,
+#arrow2::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    z-index: -1;
+}
+
+#arrow2::before {
+    content: '';
+    transform: rotate(45deg);
+
+}
+
+#tooltip2[data-popper-placement^='top']>#arrow2 {
+    bottom: -4px;
+}
+
+#tooltip2[data-popper-placement^='bottom']>#arrow2 {
+    top: -4px;
+}
+
+#tooltip2[data-popper-placement^='left']>#arrow2 {
+    right: -4px;
+}
+
+#tooltip2[data-popper-placement^='right']>#arrow2 {
+    left: -4px;
+}
+
+#tooltip3 {
+    background-image: url("../images/MODAL/MODAL guitare encadrer.png") !important;
+    min-width: 235px;
+    min-height: 290px;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    display: none;
+    
+    z-index: 1;
+
+
+}
+
+#tooltip3[data-show3] {
+    display: block;
+   
+}
+
+#arrow3,
+#arrow3::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    z-index: -1;
+}
+
+#arrow3::before {
+    content: '';
+    transform: rotate(45deg);
+
+}
+
+#tooltip3[data-popper-placement^='top']>#arrow3 {
+    bottom: -4px;
+}
+
+#tooltip3[data-popper-placement^='bottom']>#arrow3 {
+    top: -4px;
+}
+
+#tooltip3[data-popper-placement^='left']>#arrow3 {
+    right: -4px;
+}
+
+#tooltip3[data-popper-placement^='right']>#arrow3 {
+    left: -4px;
+}

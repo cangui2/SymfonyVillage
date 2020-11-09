@@ -6,7 +6,7 @@
 
 
 <section>
-    <div class="container" id="fond" >
+    <div class="container" id="fond">
         <div class="row col-lg-12 ">
 
             <div class="col-lg-4" style="/*! padding-left: 0px; */left: 10px;top: 30px">
@@ -27,30 +27,16 @@
 
             {% for Produits in produit %} {# boucle 1er tableau cat #}
 
-            <div class="card mb-3" style="min-height: 330px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <a href={{ path('fiche_produit',{'id':Produits.proId}) }}>
-                            <img src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="produit"
-                                style="width:100%">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{Produits.cat.catNom}}</h5>
-                            <p class="card-text">{{Produits.proDescription}}</p>
-                            <p class="price">{{Produits.proPrix}}€</p>
-                          
-                            <a href={{ path('panier_add',{'id':Produits.proId})}} class="btn btn-success float-right">
-                                <i class=" fas fa-shopping-cart mr-1"></i>
-                                Ajouter
-                            </a>
-                        </div>
-                    </div>
+           
+
+            <div class="card" style="max-width: 18rem;">
+                <img class="card-img-top" src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{Produits.cat.catNom}}</h5>
+                    <p class="card-text">{{Produits.proDescription}}</p>
+                    <a href={{ path('fiche_produit',{'id':Produits.proId}) }} class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-
-
 
 
 
