@@ -9,7 +9,7 @@
 
   - Categorie Fonctionnelle
   - Inscription utilisateur et admin Fonctionnelle 
-  - Panier fonctionnelle
+  - Panier fonctionnel
   - Validation Commande fonctionnelle
   - Page admin fonctionnelle
 
@@ -35,7 +35,7 @@ Pre-requis
 * [Symfony server](https://symfony.com/download)
 * [Mysql 5.5 minimum]
 * [Php 7.2.5 minimum]
-Telecharger avec git le clone du project.
+Télecharger avec git le clone du project.
 Ouvrez le dossier symfonyVillage avec votre IDE et lancer une commande CMD .
 
 ```sh
@@ -45,18 +45,18 @@ $ yarn install
 $ yarn add @symfony/webpack-encore --dev
 $ composer require easycorp/easyadmin-bundle
 ```
-Aller dans le fichier .env et parametré les accées a la base de donnée sur la ligne . (voir exemple si dessous.)
+Aller dans le fichier .env et paramètrer les accés dans la base de données sur la ligne . (voir exemple si dessous.)
 ```
 DATABASE_URL=mysql://root:password@127.0.0.1:3306/dbname?serverVersion=5.7
 ```
-Une fois que toutes les dependances sont bien installer, lancer Mysql est crée une base de donnée nomée "village".
-Dans votre IDE et sur votre Termnial CMD lancer les commandes suivante afin de crée les tables de la bases.
+Une fois que toutes les dépendances sont bien installées, lancer Mysql est créer une base de données nommée "village".
+Dans votre IDE et sur votre Termnial CMD lancer les commandes suivantes afin de créer les tables de la base.
 
 ```sh
 $ php bin/console doctrine:schema:validate
 $ php bin/console doctrine:shema:update --force
 ```
-
+Ensuite uitliser le fichier sript fournis dans le dossier de même nom afin d alimenter la base de données.
 
 
 License

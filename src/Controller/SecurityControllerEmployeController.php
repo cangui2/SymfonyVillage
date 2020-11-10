@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Utilis;
+use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,12 +24,12 @@ class SecurityControllerEmployeController extends AbstractController
     /**
      * @Route("/inscriptionEmploye", name="security_registration2")
      */
-    public function registrationEmploye(Request $request,EntityManagerInterface $manager,UserPasswordEncoderInterface $encoder){ 
+    public function registrationEmploye(Request $request,EntityManagerInterface $manager,UserPasswordEncoderInterface $encoder,PanierService $panierService){ 
         
         $user=new Employe();
         
 
-        $form2 =$this->createForm(RegistrationType2Type::class,$user);
+        $form2 =$this->createForm(RegistrationType2Type::class,$user );
 
         $form2->handleRequest($request);
       
@@ -50,7 +51,8 @@ class SecurityControllerEmployeController extends AbstractController
 
 
         return $this->render('security_controller_employe\index.html.twig',[
-            'form'=>$form2->createView()
+            'form'=>$form2->createView(),
+            'item' =>$panierService->getTotal2(),
         ]);
     }
 }
