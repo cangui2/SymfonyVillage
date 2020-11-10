@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Service\Panier\PanierService;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 
 class EspaceClientContollerController extends AbstractController
 {
@@ -13,12 +14,13 @@ class EspaceClientContollerController extends AbstractController
      * @Route("/espace/client/contoller", name="espace_client_contoller")
      * 
      */
-    public function index(PanierService $panierService)
+    public function index(PanierService $panierService,SessionInterface $session)
     {
 
         return $this->render('espace_client_contoller/index.html.twig', [
             'controller_name' => 'EspaceClientContollerController',
             'item' =>$panierService->getTotal2(),
+            'session'=>$session,
         ]);
     }
 }

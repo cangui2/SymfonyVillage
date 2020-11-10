@@ -274,6 +274,9 @@ abstract class Utilis implements UserInterface
         $this->type=$types;
    }
  
-
+   public function __toString()
+   {
+       return $this->idUtilis;
+   }
 
 }

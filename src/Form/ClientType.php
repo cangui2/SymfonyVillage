@@ -32,7 +32,7 @@ class ClientType extends AbstractType
             ->add('cliType')
             ->add('cliCoefficient')
             ->add('cliReference')
-            ->add('com')
+            
             ->add('pay')
         ;
     }

@@ -180,12 +180,9 @@ class Employe extends Utilis
     public function setId($id){
         $this->idUtilis=$this->setIdutilis($id);
 
-}
-
-    public function getIdUtilis(): ?int
-    {
-        return $this->idUtilis;
     }
+
+  
 
 
 }

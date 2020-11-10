@@ -32,6 +32,7 @@
         </thead>
         <tbody>
         {% for client in clients %}
+        
             <tr>
                 <td>{{ client.idUtilis }}</td>
                 <td>{{ client.utilNom }}</td>
@@ -51,9 +52,11 @@
                 <td>{{ client.cliCoefficient }}</td>
                 <td>{{ client.cliReference }}</td>
                 <td>
-                    <a href="{{ path('client_show', {'idUtilis': client.idUtilis}) }}">show</a>
+                  <a href="{{ path('client_show', {'idUtilis': client.idUtilis}) }}">show</a>
+                 
                     <a href="{{ path('client_edit', {'idUtilis': client.idUtilis}) }}">edit</a>
                 </td>
+                
             </tr>
         {% else %}
             <tr>
