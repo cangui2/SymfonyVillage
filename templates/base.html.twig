@@ -47,13 +47,13 @@
                     <div class="navbar-nav col-lg-10" id="nav1">
                       <a class="nav-link active col-lg-4" href="#">Infos</a>
                       {% if is_granted('ROLE_ADMIN') %}
-                      <a class="nav-link espaceClient col-lg-6" id="button" href={{ path('admin2') }}> Espace client</a>
-                      {%  if is_granted('ROLE_USER') %}
-                      <a class="nav-link espaceClient col-lg-6" id="button" href={{ path('espace_client_contoller') }}> Espace client</a>
+                      <a class="nav-link espaceClient col-lg-4" id="button" href={{ path('admin2') }}> Admin</a>
+                      {% if  is_granted('ROLE_USER') %}
+                      <a class="nav-link espaceClient col-lg-2" id="button" href={{ path('espace_client_contoller') }}> Profils</a>
                       {% endif %}
                      
                       {% endif %}
-                      <a class="nav-link espaceClient col-lg-6" id="button" href='#' }}> Espace client</a>
+                      <a class="nav-link espaceClient col-lg-4" id="button" href='#' > Espace client</a>
                       <div class="row" id="tooltip">
                         <div role="tooltip">
                           <div class="container" style="flex-wrap: nowrap !important;">
