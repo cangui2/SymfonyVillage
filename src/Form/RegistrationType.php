@@ -32,7 +32,7 @@ class RegistrationType extends AbstractType
             ->add('cliCoefficient')
             ->add('cliReference')
             ->add('pay')
-            ->add('com')
+            
         ;
     }
 

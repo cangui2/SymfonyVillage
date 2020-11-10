@@ -15,7 +15,7 @@ class LigneDeCommande1Type extends AbstractType
         $builder
             
             ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'submit'],
+                'attr' => ['class' => 'submit btn-sm btn-danger'],
             ])
         ;
     }

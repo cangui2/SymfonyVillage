@@ -15,81 +15,97 @@
 
 {% if item | length > 0%}
 
-<div class="container"id="fond">
- 
-    <div class="row"style="margin-left: 0px;padding-top: 100px;">
-  <h1>Recapitulatif commande  </h1>
-        <table>
-          
-            <thead>
-                <tr>
-                    <th>Produit</th>
-                    <th>Prix</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th></th>
-                </tr>
-            </thead>
+<div class="container" id="fond">
 
-        
 
-        <tbody>
-            {% for items  in item2 %}
 
-            <thead>
-                <tr>
-                    <td>{{items.produit.proLibelle}}</td>
-                    <td>{{items.produit.proPrix}}</td>
-                    <td>{{items.quantity}}</td>
-                    <td>{{items.produit.proPrix * items.quantity}}</td>
+    <div class="row" style="margin-left: 10px;padding-top: 100px;">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <h1>Recapitulatif de la commande </h1>
+
+                <table class="table table-striped">
+
+
+                    <thead>
+                        <tr class="table-primary">
+
+                            <th scope="col">Produit</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+
+                        {% for items  in item2 %}
+
+                        <thead>
+                            <tr>
+                                <td>{{items.produit.proLibelle}}</td>
+                                <td>{{items.produit.proPrix}}</td>
+                                <td>{{items.quantity}}</td>
+
+                                <td>{{items.produit.proPrix * items.quantity}}</td>
+                                
+                            </tr>
+
+                        </thead>
+
+                        {% endfor %}
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class='text-right'>Total :</td>
+                            <td>{{ total }}</td>
+                            <td>
                    
-                </tr>
+                            </td>
 
-            </thead>
-
-            {% endfor %}
-
-        </tbody>
-        <tfoot>
-            <tr>
-                    <td colspan="3" class='text-right'>Total :</td>
-                    <td>{{ total }}</td>
-                    <td></td>
-                   
-                </tr>
-        </tfoot>
-       </table> 
-    </div>
-    <div class="container-fluid" style="margin-top: 30px;">
-        <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">
-            <a href="{{path('produit',{id:1})}}"> <img class="img-fluid guitareHover"
-                    src="{{asset('/images/BODY/CATEGORIES guitare.png')}}" width="auto" alt=""></a>
-            <a href="{{path('produit',{id:2})}}"><img class="img-fluid batterieHover"
-                    src="{{asset('images/BODY/CATEGORIES batterie.png')}}" width="auto" alt=""></a>
-            <a href="{{path('produit',{id:3})}}"><img class="img-fluid pianoHover"
-                    src="{{asset('images/BODY/CATEGORIES piano.png')}}" width="auto" alt=""></a>
-            <a href="{{path('produit',{id:4})}}"><img class="img-fluid microHover"
-                    src="{{asset('images/BODY/CATEGORIES micro.png')}}" width="auto" alt=""></a>
+                        </tr>
+                       
+                    </tfoot>
+         
+                </table>
+                
+            </div>
+                <div class="container-fluid" style="margin-top: 30px;">
+                    <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">
+                        <a href="{{path('produit',{id:1})}}"> <img class="img-fluid guitareHover"
+                                src="{{asset('/images/BODY/CATEGORIES guitare.png')}}" width="auto" alt=""></a>
+                        <a href="{{path('produit',{id:2})}}"><img class="img-fluid batterieHover"
+                                src="{{asset('images/BODY/CATEGORIES batterie.png')}}" width="auto" alt=""></a>
+                        <a href="{{path('produit',{id:3})}}"><img class="img-fluid pianoHover"
+                                src="{{asset('images/BODY/CATEGORIES piano.png')}}" width="auto" alt=""></a>
+                        <a href="{{path('produit',{id:4})}}"><img class="img-fluid microHover"
+                                src="{{asset('images/BODY/CATEGORIES micro.png')}}" width="auto" alt=""></a>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">
+                        <a href="{{path('produit',{id:5})}}"><img class="img-fluid sonoHover"
+                                src="{{asset('images/BODY/CATEGORIES sono.png')}}" width="auto" alt=""></a>
+                        <a href="{{path('produit',{id:6})}}"><img class="img-fluid casesHover"
+                                src="{{asset('images/BODY/CATEGORIES cases.png')}}" width="auto" alt=""></a>
+                        <a href="{{path('produit',{id:7})}}"><img class="img-fluid cableHover"
+                                src="{{asset('images/BODY/CATEGORIES cable.png')}}" width="auto" alt=""></a>
+                        <a href="{{path('produit',{id:8})}}"><img class="img-fluid saxoHover"
+                                src="{{asset('images/BODY/CATEGORIES saxo.png')}}" width="auto" alt=""></a>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 16px;">
+                    <div class="col"><img class="img-fluid"
+                            src="{{asset('/images/BODY/ESPACE CLIENT/bas de page pictos.png') }}">
+                    </div>
+                </div>
+            
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row row-cols-4" style="margin-left: 20px;margin-right: 0px;">
-            <a href="{{path('produit',{id:5})}}"><img class="img-fluid sonoHover"
-                    src="{{asset('images/BODY/CATEGORIES sono.png')}}" width="auto" alt=""></a>
-            <a href="{{path('produit',{id:6})}}"><img class="img-fluid casesHover"
-                    src="{{asset('images/BODY/CATEGORIES cases.png')}}" width="auto" alt=""></a>
-            <a href="{{path('produit',{id:7})}}"><img class="img-fluid cableHover"
-                    src="{{asset('images/BODY/CATEGORIES cable.png')}}" width="auto" alt=""></a>
-            <a href="{{path('produit',{id:8})}}"><img class="img-fluid saxoHover"
-                    src="{{asset('images/BODY/CATEGORIES saxo.png')}}" width="auto" alt=""></a>
-        </div>
-    </div>
-    <div class="row" style="margin-left: 16px;">
-        <div class="col"><img class="img-fluid" src="{{asset('/images/BODY/ESPACE CLIENT/bas de page pictos.png') }}">
-        </div>
-
-    </div>
-</div>
 {% else %}
 
 {% endif %}

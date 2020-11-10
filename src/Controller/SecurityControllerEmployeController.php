@@ -52,7 +52,7 @@ class SecurityControllerEmployeController extends AbstractController
 
         return $this->render('security_controller_employe\index.html.twig',[
             'form'=>$form2->createView(),
-            'item' =>$panierService->getTotal2(),
+            'item'=>$panierService->getTotal2(),
         ]);
     }
 }

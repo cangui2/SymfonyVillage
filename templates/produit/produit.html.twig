@@ -30,11 +30,11 @@
            
 
             <div class="card" style="max-width: 18rem;">
-                <img class="card-img-top" src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="Card image cap">
+                <img class="card-img-top image-fluid" style="width:100%" src="..\images\Produits\{{Produits.proId}}.{{Produits.proPhoto}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{Produits.cat.catNom}}</h5>
                     <p class="card-text">{{Produits.proDescription}}</p>
-                    <a href={{ path('fiche_produit',{'id':Produits.proId}) }} class="btn btn-primary">Go somewhere</a>
+                    <a href={{ path('fiche_produit',{'id':Produits.proId}) }} class="btn btn-primary">Ajouter</a>
                 </div>
             </div>
 
