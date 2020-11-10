@@ -305,8 +305,8 @@ body {
 
 #tooltip2 {
     background-image: url("../images/MODAL/MODAL guitare encadrer.png") !important;
-    min-width: 235px;
-    min-height: 290px;
+    min-width: 234px;
+    min-height: 300px;
     color: white;
     font-weight: bold;
     padding: 4px 8px;
@@ -314,7 +314,7 @@ body {
     border-radius: 4px;
     display: none;
     
-    z-index: 1;
+    z-index: 2;
 
 
 }
@@ -357,7 +357,7 @@ body {
 #tooltip3 {
     background-image: url("../images/MODAL/MODAL guitare encadrer.png") !important;
     min-width: 235px;
-    min-height: 290px;
+    min-height: 300px;
     color: white;
     font-weight: bold;
     padding: 4px 8px;
@@ -403,4 +403,9 @@ body {
 
 #tooltip3[data-popper-placement^='right']>#arrow3 {
     left: -4px;
+}
+
+.liens{
+    margin-top: 30px;
+    color: black;
 }
