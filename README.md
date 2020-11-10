@@ -32,7 +32,7 @@ Dillinger uses a number of open source projects to work properly:
 Pre-requis
 * [Composer](https://getcomposer.org/)
 * [Yarn](https://yarnpkg.com/)
-* [Symfony server](https://symfony.com/download)
+* [Symfony server ou Laragon ou Wamp](https://symfony.com/download)
 * [Mysql 5.5 minimum]
 * [Php 7.2.5 minimum]
 Télecharger avec git le clone du project.
