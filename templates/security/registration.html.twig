@@ -43,7 +43,9 @@
     {{form_row(form.Util_date_de_naissance,{'label':'Date de naissance'})}}
     {{form_row(form.Util_telephone,{'label':'Numero de telephone'})}}
     {{form_row(form.Util_adresse,{'label':'Adresse de facturation'})}}
-    
+    <div style="display: none">
+    {{form_row(form.roles,{'label':'roles'})}}
+    </div>
     {{form_row(form.Util_Cp,{'label':'Code Postal'})}}
     {{form_row(form.Util_ville,{'label':'Ville'})}}
     {{form_row(form.pay,{'label':'Pays'})}}

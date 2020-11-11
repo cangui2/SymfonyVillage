@@ -20,7 +20,7 @@ class EspaceClientContollerController extends AbstractController
         return $this->render('espace_client_contoller/index.html.twig', [
             'controller_name' => 'EspaceClientContollerController',
             'item' =>$panierService->getTotal2(),
-            'session'=>$session,
+            
         ]);
     }
 }

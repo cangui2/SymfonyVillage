@@ -70,7 +70,11 @@ class Client extends Utilis
      * })
      */
     private $pay;
-    
+    /**
+     *@var array
+     *
+     * @ORM\Column(name="cli_roles", type="json", nullable=false)
+     */
     private $roles = [];
 
     public function getCliAdresseLivraison(): ?string
@@ -156,5 +160,10 @@ class Client extends Utilis
         
        return array_unique($Roles);
    }
+   public function setRoles(?array $roles): self
+   {
+       $this->empRoles = $roles;
 
-}
+       return $this;
+   }
+} 

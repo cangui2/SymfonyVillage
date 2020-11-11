@@ -15,13 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PanierController extends AbstractController
 {
     /**
      * @Route("/panier", name="panier",methods={"GET","POST"})
      */
-    public function index(PanierService $panierService,Request $request,EntityManagerInterface $em):Response
+    public function index(PanierService $panierService,Request $request,SessionInterface $session):Response
     {
         $ligneDeCommande=new LigneDeCommande();
         $form =$this->createForm(LigneDeCommande1Type::class,$ligneDeCommande);
@@ -64,9 +65,11 @@ class PanierController extends AbstractController
 
                                 // actually executes the queries (i.e. the INSERT query)
                                 $entityManager->flush();
+                                
         
                              }
-                    
+                             
+                             
                     return $this->redirectToRoute('commande');
                 
                 }
