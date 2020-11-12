@@ -77,5 +77,6 @@ INSERT INTO `produit` (`pro_id`,`pro_libelle`,`pro_description`,`pro_prix`,`pro_
 
 User
 INSERT INTO `utilis` (`Id_utilis`, `Util_Nom`, `Util_Prenom`, `Util_sexe`, `Util_adresse`, `Util_Cp`, `Util_ville`, `Util_mail`, `Util_username`, `Util_password`, `Util_telephone`, `Util_date_de_naissance`, `type`) VALUES
-(2, 'canguilieme', 'julien', 'H', '160', '60700', 'pont', 'canguijc@gmail.com', 'cangui', '$2y$13$09V3CNKzLIZM5AYD9SERFeRJmnlcdjnZ/BKZE0UxJjZ44EONqJCHi', '0617452235', '2021-12-18', 'employe'),
-(3, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', '$2y$13$UFgMwmAlyF3O0Y4dI8B.7.neuzho7AFtftUmbVlf9G4FPeBeKiB9q', NULL, NULL, 'employe');
+	(4, 'Administrateur', '1', 'h', 'h', 60700, 'pont', 'canguijc@gmail.com', 'admin', '$2y$13$nQ5TnRudv/Pn402SE7rG7uV37t1iv3Cz3Ciek9oQZE4ALVkXH.k9y', NULL, NULL, 'employe');
+INSERT INTO `employe` (`pos_id`, `emp_pos_id`, `emp_date_entree`, `emp_date_sortie`, `emp_num_secu_social`, `emp_id_1`, `emp_roles`, `Id_utilis`) VALUES
+	(NULL, NULL, '2015-01-01', NULL, 11, NULL, '["ROLE_ADMIN"]', 4);

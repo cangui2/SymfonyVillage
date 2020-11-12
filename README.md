@@ -35,6 +35,7 @@ Pre-requis
 * [Symfony server ou Laragon ou Wamp](https://symfony.com/download)
 * [Mysql 5.5 minimum]
 * [Php 7.2.5 minimum]
+* [Node.js]
 Télecharger avec git le clone du project.
 Ouvrez le dossier symfonyVillage avec votre IDE et lancer une commande CMD .
 
@@ -44,6 +45,8 @@ $ composer require symfony/webpack-encore-bundle
 $ yarn install
 $ yarn add @symfony/webpack-encore --dev
 $ composer require easycorp/easyadmin-bundle
+$ yarn install
+$ yarn add @symfony/webpack-encore --dev
 ```
 Aller dans le fichier .env et paramètrer les accés dans la base de données sur la ligne . (voir exemple si dessous.)
 ```
