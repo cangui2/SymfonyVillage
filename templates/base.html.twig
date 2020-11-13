@@ -28,11 +28,11 @@
 
   <div class="container navFond2">
     <div class="row navFond" style="left: 2px;">
-      <div id="logo" class="col-4 col-lg-4 d-inline-block" style="padding-left: 0px;padding-right: 0px;">
+      <div id="logo" class="col-4 col-lg-4 col-md-2 d-inline-block" style="padding-left: 0px;padding-right: 0px;">
         <a href={{ path('index') }}><img class="logo img-fluid" src="{{asset('images/HEADER/logo village green.png')}}"
-            style="position: absolute;min-width: 100%;margin-left: -15.9px;">
+            style="position: absolute;max-width: 100%;margin-left: -15.9px;">
       </div>
-      <div class="col-lg-7" id="navFond">
+      <div class="col-lg-7 " id="navFond">
         <nav class="navbar navbar-expand-lg navbar-light col-12 col-md-12 col-lg-12" id='one'>
           <a class="navbar-brand"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -48,9 +48,9 @@
                     <div class="navbar-nav col-lg-10" id="nav1">
                       <a class="nav-link active col-lg-4" href="#">Infos</a>
                       {% if is_granted('ROLE_ADMIN') %}
-                      <a class="nav-link espaceClient col-lg-4" id="button" href={{ path('admin2') }}> Espace client</a>
+                      <a class="nav-link espaceClient col-lg-2" id="button" href={{ path('admin2') }}> Admin</a>
                       {% if  is_granted('ROLE_USER') %}
-                      <a class="nav-link espaceClient col-lg-4" id="button" href={{ path('espace_client_contoller') }}> Espace client</a>
+                      <a class="nav-link espaceClient col-lg-2" id="button" href={{ path('espace_client_contoller') }}> Profils</a>
                       {% endif %}
                      
                       {% endif %}

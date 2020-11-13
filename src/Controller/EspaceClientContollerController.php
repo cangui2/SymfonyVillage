@@ -16,10 +16,15 @@ class EspaceClientContollerController extends AbstractController
      */
     public function index(PanierService $panierService,SessionInterface $session)
     {
+        $repository = $this->getDoctrine()
+                   ->getManager()
+                   ->getRepository('App\Entity\Employe');
+$session1 = $repository->find(4);
 
         return $this->render('espace_client_contoller/index.html.twig', [
             'controller_name' => 'EspaceClientContollerController',
             'item' =>$panierService->getTotal2(),
+            'session'=>$session1,
             
         ]);
     }
